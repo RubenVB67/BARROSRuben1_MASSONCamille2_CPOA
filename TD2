@@ -11,7 +11,7 @@ public interface Connexion
 		Connection maConnexion = null;
 		try {
 			maConnexion = DriverManager.getConnection(url, login, pwd);
-			System.out.println("Connexion réussie");
+			System.out.println("Connexion rÃ©ussie");
 		} catch (SQLException sqle) {
 			System.out.println("Erreur connexion" + sqle.getMessage());
 		}
