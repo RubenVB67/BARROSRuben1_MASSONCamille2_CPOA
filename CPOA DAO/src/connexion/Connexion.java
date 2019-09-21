@@ -7,7 +7,7 @@ public interface Connexion
 		String url = "jdbc:mysql://devbdd.iutmetz.univ-lorraine.fr:3306/barros4u_cpoa";
 		url += "?serverTimezone=Europe/Paris";
 		String login = "barros4u_appli";
-		String pwd = "31717855";
+		String pwd = "31717855"; 
 		Connection maConnexion = null;
 		try {
 			maConnexion = DriverManager.getConnection(url, login, pwd);
