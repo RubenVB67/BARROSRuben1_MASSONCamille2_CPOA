@@ -1,8 +1,9 @@
 package metiers;
 import java.sql.*;
+
 import connexion.Connexion;
 
-public class Periodicite implements Connexion
+public class Periodicite
 {
 	protected int id_periodicite;
 	protected String libelle;
@@ -27,7 +28,8 @@ public class Periodicite implements Connexion
 	
 	public void Ajouter(int id_periodicite,String libelle) {
 		try {
-			Connection laConnexion = Connexion.creeConnexion();
+			Connexion c = new Connexion();
+			Connection laConnexion = c.creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("insert into Periodicite(id_periodicite,libelle) values(?,?)",Statement.RETURN_GENERATED_KEYS);
 			requete.setString(2,libelle);
 			requete.setInt(1,id_periodicite);
@@ -48,7 +50,8 @@ public class Periodicite implements Connexion
 	public void Modifier(int id_periodicite,String libelle) {
 		try {
 			
-			Connection laConnexion = Connexion.creeConnexion();
+			Connexion c = new Connexion();
+			Connection laConnexion = c.creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("UPDATE Periodicite SET libelle = ? WHERE id_periodicite= ?");
 			requete.setString(1,libelle);
 			requete.setInt(2,id_periodicite);
@@ -65,7 +68,8 @@ public class Periodicite implements Connexion
 	
 	public void Supprimer(int id_periodicite) {
 		try {
-			Connection laConnexion = Connexion.creeConnexion();
+			Connexion c = new Connexion();
+			Connection laConnexion = c.creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("delete from Periodicite where id_periodicite= ?");
 			requete.setInt(1,id_periodicite);
 			requete.executeUpdate();

@@ -4,7 +4,7 @@ import java.sql.*;
 
 import connexion.Connexion;
 
-public class Revue implements Connexion
+public class Revue
 {
 
 	int id_revue;
@@ -61,7 +61,8 @@ public class Revue implements Connexion
 	
 	public void Ajouter(int id_revue, String titre, String description, int tarif_numero, String visuel, int id_periodicite) {
 		try {
-			Connection laConnexion = Connexion.creeConnexion();
+			Connexion c = new Connexion();
+			Connection laConnexion = c.creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("insert into Revue(id_revue,titre,description,tarif_numero,visuel,id_periodicite) values(?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
 			requete.setInt(6,id_periodicite);
 			requete.setString(5,visuel);
@@ -86,7 +87,8 @@ public class Revue implements Connexion
 	public void Modifier(int id_revue,String titre, String description, int tarif_numero, String visuel, int id_periodicite) {
 		try {
 			
-			Connection laConnexion = Connexion.creeConnexion();
+			Connexion c = new Connexion();
+			Connection laConnexion = c.creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("UPDATE Revue SET titre,description,tarif_numero,visuel,id_periodicite = ? WHERE id_revue= ?");
 			requete.setInt(6,id_periodicite);
 			requete.setString(5,visuel);
@@ -107,7 +109,8 @@ public class Revue implements Connexion
 	
 	public void Supprimer(int id_revue) {
 		try {
-			Connection laConnexion = Connexion.creeConnexion();
+			Connexion c = new Connexion();
+			Connection laConnexion = c.creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("delete from Revue where id_revue= ?");
 			requete.setInt(1,id_revue);
 			requete.executeUpdate();
