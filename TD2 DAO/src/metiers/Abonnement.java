@@ -46,8 +46,7 @@ public class Abonnement
 	
 	public void Ajouter(int id_client,int id_revue,String date_debut,String date_fin ) {
 		try {
-			Connexion c = new Connexion();
-			Connection laConnexion = c.creeConnexion();
+			Connection laConnexion = Connexion.getInstance().creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("insert into Abonnement(id_client,id_revue,date_debut,date_fin) values(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
 			requete.setInt(2,id_revue);
 			requete.setInt(1,id_client);
@@ -80,8 +79,7 @@ public class Abonnement
 	//si modif marche pas méthode val -> faire une fonction pour chaque champ
 	public void Modifier(int id_client,int id_revue,String date_debut,String date_fin) {
 		try {
-			Connexion c = new Connexion();
-			Connection laConnexion = c.creeConnexion();
+			Connection laConnexion = Connexion.getInstance().creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("UPDATE Abonnement SET date_debut,date_fin = ? WHERE id_client= ? AND id_revue= ?");
 			requete.setInt(2,id_revue);
 			requete.setInt(1,id_client);
@@ -110,8 +108,7 @@ public class Abonnement
 	
 	public void Supprimer(int id_client,int id_revue) {
 		try {
-			Connexion c = new Connexion();
-			Connection laConnexion = c.creeConnexion();
+			Connection laConnexion = Connexion.getInstance().creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("delete from Abonnement where id_client =? AND id_revue= ?");
 			requete.setInt(2,id_revue);
 			requete.setInt(1,id_client);

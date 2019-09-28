@@ -79,8 +79,7 @@ public class Client
 	public void Ajouter(int id_client, String nom, String prenom, int no_rue, String voie, int code_postal, String ville,
 			String pays) {
 		try {
-			Connexion c = new Connexion();
-			Connection laConnexion = c.creeConnexion();
+			Connection laConnexion = Connexion.getInstance().creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("insert into Client(id_client,nom,prenom,no_rue,voie,code_postal,ville,pays) values(?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
 			requete.setString(8,pays);
 			requete.setString(7,ville);
@@ -108,8 +107,7 @@ public class Client
 			String pays) {
 		try {
 			
-			Connexion c = new Connexion();
-			Connection laConnexion = c.creeConnexion();
+			Connection laConnexion = Connexion.getInstance().creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("UPDATE Client SET nom,prenom,no_rue,voie,code_postal,ville,pays = ? WHERE id_client= ?");
 			requete.setString(8,pays);
 			requete.setString(7,ville);
@@ -132,8 +130,7 @@ public class Client
 	
 	public void Supprimer(int id_revue) {
 		try {
-			Connexion c = new Connexion();
-			Connection laConnexion = c.creeConnexion();
+			Connection laConnexion = Connexion.getInstance().creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("delete from Client where id_client= ?");
 			requete.setInt(1,id_revue);
 			requete.executeUpdate();

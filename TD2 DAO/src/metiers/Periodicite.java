@@ -28,8 +28,7 @@ public class Periodicite
 	
 	public void Ajouter(int id_periodicite,String libelle) {
 		try {
-			Connexion c = new Connexion();
-			Connection laConnexion = c.creeConnexion();
+			Connection laConnexion = Connexion.getInstance().creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("insert into Periodicite(id_periodicite,libelle) values(?,?)",Statement.RETURN_GENERATED_KEYS);
 			requete.setString(2,libelle);
 			requete.setInt(1,id_periodicite);
@@ -50,8 +49,7 @@ public class Periodicite
 	public void Modifier(int id_periodicite,String libelle) {
 		try {
 			
-			Connexion c = new Connexion();
-			Connection laConnexion = c.creeConnexion();
+			Connection laConnexion = Connexion.getInstance().creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("UPDATE Periodicite SET libelle = ? WHERE id_periodicite= ?");
 			requete.setString(1,libelle);
 			requete.setInt(2,id_periodicite);
@@ -68,8 +66,7 @@ public class Periodicite
 	
 	public void Supprimer(int id_periodicite) {
 		try {
-			Connexion c = new Connexion();
-			Connection laConnexion = c.creeConnexion();
+			Connection laConnexion = Connexion.getInstance().creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("delete from Periodicite where id_periodicite= ?");
 			requete.setInt(1,id_periodicite);
 			requete.executeUpdate();
