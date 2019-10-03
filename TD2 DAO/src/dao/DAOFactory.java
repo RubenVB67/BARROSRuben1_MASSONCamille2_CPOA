@@ -5,24 +5,27 @@ import metierDAO.*;
 public abstract class DAOFactory {
 	
 	public static DAOFactory getDAOFactory(Persistance cible) {
-		DAOFactoriy daoF = null;
+		DAOFactory daoF = null;
 		
 		switch (cible) {
 		case MYSQL:
-		daoF = new MySQLDAOFactory();
+		daoF = new MYSQLDAOFactory();
 		break;
 		case LISTE_MEMOIRE:
 		daoF = new ListeMemoireDAOFactory();
 		break;
 		}
-
-		return doaF;
+		
+		return daoF;
 		
 	}
 	
-	public abstract IClientDAO getIClientDAO();
-	public abstract IRevueDAO getIRevueDAO();
-	public abstract IAbonnementDAO getIAbonnementDAO();
-	public abstract IPeriodiciteDAO getIPeriodiciteDAO();
+	public abstract IClientDAO getClientDAO();
+	
+	public abstract IRevueDAO getRevueDAO();
+	
+	public abstract IAbonnementDAO getAbonnementDAO();
+	
+	public abstract IPeriodiciteDAO getPeriodiciteDAO();
 	
 }

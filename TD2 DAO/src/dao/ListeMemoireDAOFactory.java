@@ -2,25 +2,25 @@ package dao;
 
 import metierDAO.*;
 
-public class MYSQLDAOFactory extends DAOFactory {
+public class ListeMemoireDAOFactory extends DAOFactory {
 
 	@Override
 	public IPeriodiciteDAO getPeriodiciteDAO() {
-		return MySQLPeriodiciteDAO.getInstance();
+		return ListeMemoirePeriodiciteDAO.getInstance();
 	}
 	@Override
 	public IAbonnementDAO getAbonnementDAO() {
-		return MySQLAbonnementDAO.getInstance();
+		return ListeMemoireAbonnementDAO.getInstance();
 	}
 
 	@Override
 	public IClientDAO getClientDAO() {
-		return MySQLClientDAO.getInstance();
+		return ListeMemoireClientDAO.getInstance();
 	}
 
 	@Override
 	public IRevueDAO getRevueDAO() {
-		return MySQLRevueDAO.getInstance();
+		return ListeMemoireRevueDAO.getInstance();
 	}
-
+	
 }
