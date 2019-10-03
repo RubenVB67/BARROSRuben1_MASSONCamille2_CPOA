@@ -1,4 +1,4 @@
-package ImetierDAO;
+package metierDAO;
 
 import java.util.ArrayList;
 
