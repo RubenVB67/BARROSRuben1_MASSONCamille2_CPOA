@@ -1,6 +1,8 @@
 package dao;
 
-public class DAOFactory {
+import metierDAO.*;
+
+public abstract class DAOFactory {
 	
 	public static DAOFactory getDAOFactory(Persistance cible) {
 		DAOFactoriy daoF = null;
