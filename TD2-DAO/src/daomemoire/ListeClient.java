@@ -33,58 +33,92 @@ public class ListeClient implements ClientIDAO{
 	}
 
 	@Override
-	public boolean create(Client object) {
+	public boolean create(Client cli) {
 		if (this.ListeClient.size() == 0) {
-			object.setId(0);
+			cli.setId(0);
 		} else {
 			int id = this.ListeClient.get(this.ListeClient.size() - 1).getId() + 1;
-			object.setId(id);
+			cli.setId(id);
 		}
 
-		boolean ok = this.ListeClient.add(object);
+		boolean ok = this.ListeClient.add(cli);
 		return ok;
 	}
 
 	@Override
-	public boolean update(Client object) {
-		int idx = this.ListeClient.indexOf(object);
+	public boolean update(Client cli) {
+		int idx = this.ListeClient.indexOf(cli);
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
 		} else {
-			this.ListeClient.set(idx, object);
+			this.ListeClient.set(idx, cli);
 		}
 		return true;
 	}
 
 	@Override
-	public boolean delete(Client object) {
+	public boolean delete(Client cli) {
 		Client cl;
 
-		int idx = this.ListeClient.indexOf(object);
+		int idx = this.ListeClient.indexOf(cli);
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
 		} else {
 			cl = this.ListeClient.remove(idx);
 		}
-		return object.equals(cl);
+		return cli.equals(cl);
 	}
 
 	@Override
-	public Client getById(int id_c) {
-		Client cl = new Client();
+	public Client getById(int id) {
+		Client cli = new Client();
 		boolean trouve = false;
 		int i = 0;
 		while (trouve == false && i < this.ListeClient.size()) {
-			if (this.ListeClient.get(i).getId() == id_c) {
-				cl = this.ListeClient.get(i);
+			if (this.ListeClient.get(i).getId() == id) {
+				cli = this.ListeClient.get(i);
 				trouve = true;
 			} else
 				i++;
 		}
 		if (i >= this.ListeClient.size()) {
-			System.out.println("Aucun ClientM avec cet id");
-			cl = null;
+			System.out.println("Pas de clients avec cet id_client");
+			cli = null;
 		}
-		return cl;
+		return cli;
+	}
+	
+	
+//---------------------------------- a faire plus tard -------------------------------------------------------------
+
+
+	@Override
+	public ArrayList<Client> getByNomPrenom(String nom, String prenom) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Client> getByAdresse(int no_rue, String voie) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Client> getByCodePostal(int codepostal) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Client> getByVille(String ville) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Client> getByPays(String Pays) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

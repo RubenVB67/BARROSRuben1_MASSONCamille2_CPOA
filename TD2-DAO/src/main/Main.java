@@ -21,9 +21,9 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		int choixdao;
 		DAOFactory daof = null;
-		int dedans = 1;
-		while (dedans == 1) {
-			System.out.println("Local (0)/Online(1)");
+		int ok = 1;
+		while (ok == 1) {
+			System.out.println("ListeMemoire --> 0\nMySQL  --> 1");
 			do {
 				choixdao = sc.nextInt();
 			} while (choixdao != 0 && choixdao != 1);
@@ -32,7 +32,7 @@ public class Main {
 			else if (choixdao == 0)
 				daof = DAOFactory.getDAOFactory(Persistance.Liste);
 
-			System.out.println("Sur quelle table voulez vous operer ? (Abonnement 1,Client 2,Periodicite 3,Revue 4)");
+			System.out.println("Quelle table :\n - Abonnement --> 1 \n - Client --> 2 \n - Periodicite --> 3 \n - Revue --> 4)");
 			int choix = sc.nextInt();
 			switch (choix) {
 			case 1:
@@ -48,14 +48,14 @@ public class Main {
 				menuRevue(daof);
 				break;
 			default:
-				System.out.println("Mauvais choix");
+				System.out.println("Pas compris le choix");
 				break;
 			}
 
-			System.out.println("Voulez vous continuer ?(0 non,1 oui)");
+			System.out.println("Fin de tache : \n - oui --> 0 \n - non --> 1");
 			do {
-				dedans = sc.nextInt();
-			} while (dedans != 0 && dedans != 1);
+				ok = sc.nextInt();
+			} while (ok != 0 && ok != 1);
 
 		}
 		sc.close();
@@ -83,8 +83,6 @@ public class Main {
 				if (!listeidcl.contains(idabo))
 					System.out.println("Cet id n'existe pas");
 			} while (!listeidcl.contains(idabo));
-			// On récupère toutes les revues auxquelles est abonné le client choisi pour
-			// vérifier ensuite le choix de la revue
 			for (Abonnement abo : m.findAll())
 				if (abo.getId_client() == idabo)
 					listeidrevcl.add(abo.getId_revue());
