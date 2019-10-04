@@ -13,6 +13,7 @@ public class Revue
 	int tarif_numero;
 	String visuel;
 	int id_periodicite;
+	
 	public int getId_revue() {
 		return id_revue;
 	}
@@ -49,6 +50,7 @@ public class Revue
 	public void setId_periodicite(int id_periodicite) {
 		this.id_periodicite = id_periodicite;
 	}
+	
 	public Revue(int id_revue, String titre, String description, int tarif_numero, String visuel, int id_periodicite) {
 		super();
 		this.id_revue = id_revue;
@@ -58,6 +60,7 @@ public class Revue
 		this.visuel = visuel;
 		this.id_periodicite = id_periodicite;
 	}
+	
 	
 	public void Ajouter(int id_revue, String titre, String description, int tarif_numero, String visuel, int id_periodicite) {
 		try {

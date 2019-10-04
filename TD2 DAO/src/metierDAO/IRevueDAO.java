@@ -3,11 +3,23 @@ package metierDAO;
 import java.util.ArrayList;
 
 import dao.IDAO;
+import metiers.Abonnement;
 import metiers.Revue;
 
 
 public interface IRevueDAO extends IDAO<Revue>{
 
+	
+	@Override
+	public Revue getById(int id);
+	@Override
+	public abstract	boolean create(Revue rev);
+	@Override
+	public abstract boolean update(Revue rev);
+	@Override
+	public abstract boolean delete(Revue rev);
+	
+	
 	public abstract ArrayList <Revue>getByTitre(String titre);
 	public abstract ArrayList <Revue>getByDescription(String description);
 	public abstract ArrayList <Revue>getByTarif(int tarif_numero);
