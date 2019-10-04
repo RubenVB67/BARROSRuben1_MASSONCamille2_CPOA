@@ -28,7 +28,7 @@ public class MySQLRevueDAO implements IRevueDAO{
 			System.out.println("Pb Revue.getById" + sqle.getMessage());
 		}
 		
-		return revue;
+		return revue;	//faux mais a finir par la suite
 	}
 	@Override
 	public	boolean create(Revue rev){

@@ -132,7 +132,7 @@ public class Client
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("delete from Client where id_client= ?");
-			requete.setInt(1,id_revue);
+			requete.setInt(1,id_client);
 			requete.executeUpdate();
 			if (requete != null)
 				requete.close();

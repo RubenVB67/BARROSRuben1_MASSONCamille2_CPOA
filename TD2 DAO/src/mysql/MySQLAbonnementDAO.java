@@ -1,7 +1,11 @@
 package mysql;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import connexion.Connexion;
 import metierDAO.IAbonnementDAO;
 import metiers.Abonnement;
 
@@ -10,6 +14,10 @@ public class MySQLAbonnementDAO  implements IAbonnementDAO{
 	@Override
 	public Abonnement getById(int id) {
 		return null;
+	}
+	
+	public Abonnement getById(int id_client, int id_revue) {
+		return null;	//faux mais a finir par la suite
 	}
 
 	@Override
