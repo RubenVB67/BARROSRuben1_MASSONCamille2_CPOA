@@ -62,10 +62,10 @@ public class MySQLRevueDAO implements IRevueDAO{
 				requete.close();
 			if (laConnexion != null)
 				laConnexion.close();
-			System.out.println("Ajout effectué");
+			System.out.println("Ajout effectue");
 			return true;
 		} catch (SQLException sqle) {
-			System.out.println("Il y'a un problème" + sqle.getMessage());
+			System.out.println("Il y'a un probleme" + sqle.getMessage());
 			return false;
 		}
 	}
@@ -85,10 +85,10 @@ public class MySQLRevueDAO implements IRevueDAO{
 				requete.close();
 			if (laConnexion != null)
 				laConnexion.close();
-			System.out.println("Modification effectué");
+			System.out.println("Modification effectue");
 			return true;
 		} catch (SQLException sqle) {
-			System.out.println("Il y'a un problème" + sqle.getMessage());
+			System.out.println("Il y'a un probleme" + sqle.getMessage());
 			return false;
 		}
 	}
@@ -103,11 +103,11 @@ public class MySQLRevueDAO implements IRevueDAO{
 				requete.close();
 			if (laConnexion != null)
 				laConnexion.close();
-			System.out.println("Suppression effectué");
+			System.out.println("Suppression effectue");
 			return true;
 			} 
 		catch (SQLException sqle) {
-			System.out.println("Il y'a un problème" + sqle.getMessage());
+			System.out.println("Il y'a un probleme" + sqle.getMessage());
 			return false;
 			}
 	}

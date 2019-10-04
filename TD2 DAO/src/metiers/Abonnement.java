@@ -71,12 +71,12 @@ public class Abonnement
 				requete.close();
 			if (laConnexion != null)
 				laConnexion.close();
-			System.out.println("Ajout effectué");
+			System.out.println("Ajout effectue");
 		} catch (SQLException sqle) {
-			System.out.println("Il y'a un problème" + sqle.getMessage());
+			System.out.println("Il y'a un probleme" + sqle.getMessage());
 		}
 	}
-	//si modif marche pas méthode val -> faire une fonction pour chaque champ
+	//si modif marche pas methode val -> faire une fonction pour chaque champ
 	public void Modifier(int id_client,int id_revue,String date_debut,String date_fin) {
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();
@@ -93,16 +93,16 @@ public class Abonnement
 			LocalDate date1 = LocalDate.parse(date_debut);
 			LocalDate date2 = LocalDate.parse(date_fin);
 			
-			requete.setDate(4,Date.valueOf(date_fin));
-			requete.setDate(3,Date.valueOf(date_debut));
+			requete.setDate(4,Date.valueOf(date1));
+			requete.setDate(3,Date.valueOf(date2));
 			requete.executeUpdate();
 			if (requete != null)
 				requete.close();
 			if (laConnexion != null)
 				laConnexion.close();
-			System.out.println("Modification effectué");
+			System.out.println("Modification effectue");
 		} catch (SQLException sqle) {
-			System.out.println("Il y'a un problème" + sqle.getMessage());
+			System.out.println("Il y'a un probleme" + sqle.getMessage());
 		}
 	}
 	
@@ -117,9 +117,9 @@ public class Abonnement
 				requete.close();
 			if (laConnexion != null)
 				laConnexion.close();
-			System.out.println("Suppression effectué");
+			System.out.println("Suppression effectue");
 		} catch (SQLException sqle) {
-			System.out.println("Il y'a un problème" + sqle.getMessage());
+			System.out.println("Il y'a un probleme" + sqle.getMessage());
 		}
 	}
 }
