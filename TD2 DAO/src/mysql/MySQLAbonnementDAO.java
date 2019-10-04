@@ -11,11 +11,26 @@ import metiers.Abonnement;
 
 public class MySQLAbonnementDAO  implements IAbonnementDAO{
 
+	private static MySQLAbonnementDAO instance = null;
+	
+	private MySQLAbonnementDAO(){
+		// singleton
+	}
+	
+	public static MySQLAbonnementDAO getInstance(){
+		if (instance == null){
+			instance = new MySQLAbonnementDAO();
+		}
+		return instance;
+	}
+	
+	
+	
+	
 	@Override
 	public Abonnement getById(int id) {
 		return null;
 	}
-	
 	public Abonnement getById(int id_client, int id_revue) {
 		return null;	//faux mais a finir par la suite
 	}

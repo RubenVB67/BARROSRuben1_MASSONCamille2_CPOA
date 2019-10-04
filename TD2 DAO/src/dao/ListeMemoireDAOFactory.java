@@ -1,6 +1,7 @@
 package dao;
 
 import metierDAO.*;
+import listememoire.*;
 
 public class ListeMemoireDAOFactory extends DAOFactory {
 

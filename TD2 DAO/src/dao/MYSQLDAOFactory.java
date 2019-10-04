@@ -1,6 +1,7 @@
 package dao;
 
 import metierDAO.*;
+import mysql.*;
 
 public class MYSQLDAOFactory extends DAOFactory {
 

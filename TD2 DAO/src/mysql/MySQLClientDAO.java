@@ -13,6 +13,21 @@ import metiers.Client;
 
 public class MySQLClientDAO  implements IClientDAO{
 
+	private static MySQLClientDAO instance = null;
+	
+	private MySQLClientDAO(){
+		// singleton
+	}
+	
+	public static MySQLClientDAO getInstance(){
+		if (instance == null){
+			instance = new MySQLClientDAO();
+		}
+		return instance;
+	}
+	
+	
+	
 	@Override
 	public Client getById(int id) {
 		Client client = null;

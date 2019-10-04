@@ -13,6 +13,19 @@ import metiers.Revue;
 
 public class MySQLRevueDAO implements IRevueDAO{
 
+	private static MySQLRevueDAO instance = null;
+	
+	private MySQLRevueDAO(){
+		// singleton
+	}
+	
+	public static MySQLRevueDAO getInstance(){
+		if (instance == null){
+			instance = new MySQLRevueDAO();
+		}
+		return instance;
+	}
+	
 	@Override
 	public Revue getById(int id){
 		Revue revue = null;
