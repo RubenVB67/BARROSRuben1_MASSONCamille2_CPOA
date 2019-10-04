@@ -35,9 +35,7 @@ public class Client {
 		this.pays = null;
 	}
 	
-	public Client() {
-		// TODO Auto-generated constructor stub
-	}
+	public Client() {}
 
 	public int getId() {
 		return id_client;
@@ -99,48 +97,60 @@ public class Client {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
+		
 		if (obj == null)
 			return false;
+		
 		if (getClass() != obj.getClass())
 			return false;
+		
 		Client other = (Client) obj;
+		
 		if (code_postal == null) {
 			if (other.code_postal != null)
 				return false;
 		} else if (!code_postal.equals(other.code_postal))
 			return false;
+		
 		if (id_client != other.id_client)
 			return false;
+		
 		if (no_rue == null) {
 			if (other.no_rue != null)
 				return false;
 		} else if (!no_rue.equals(other.no_rue))
 			return false;
+		
 		if (nom == null) {
 			if (other.nom != null)
 				return false;
 		} else if (!nom.equals(other.nom))
 			return false;
+		
 		if (pays == null) {
 			if (other.pays != null)
 				return false;
 		} else if (!pays.equals(other.pays))
 			return false;
+		
 		if (prenom == null) {
 			if (other.prenom != null)
 				return false;
 		} else if (!prenom.equals(other.prenom))
 			return false;
+		
 		if (ville == null) {
 			if (other.ville != null)
 				return false;
 		} else if (!ville.equals(other.ville))
 			return false;
+		
 		if (voie == null) {
 			if (other.voie != null)
 				return false;
 		} else if (!voie.equals(other.voie))
 			return false;
+		
 		return true;
 	}
 }

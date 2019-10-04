@@ -82,32 +82,42 @@ public class Revue {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
+		
 		if (obj == null)
 			return false;
+		
 		if (getClass() != obj.getClass())
 			return false;
+		
 		Revue other = (Revue) obj;
+		
 		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
+		
 		if (id_periodicite != other.id_periodicite)
 			return false;
+		
 		if (id_revue != other.id_revue)
 			return false;
+		
 		if (Double.doubleToLongBits(tarif_numero) != Double.doubleToLongBits(other.tarif_numero))
 			return false;
+		
 		if (titre == null) {
 			if (other.titre != null)
 				return false;
 		} else if (!titre.equals(other.titre))
 			return false;
+		
 		if (visuel == null) {
 			if (other.visuel != null)
 				return false;
 		} else if (!visuel.equals(other.visuel))
 			return false;
+		
 		return true;
 	}
 }

@@ -17,7 +17,7 @@ public abstract class DAOFactory {
 		return daof;
 		}
 
-    // Interfaces métier en relation :
+    // Interfaces metier en relation :
     public abstract ClientIDAO getClientDAO();
 
     public abstract RevueIDAO getRevueDAO();

@@ -16,9 +16,7 @@ public class Abonnement {
 		this.date_fin = date_fin;
 	}
 
-	public Abonnement() {
-		// TODO Auto-generated constructor stub
-	}
+	public Abonnement() {}
 
 	public int getId_client() {
 		return id_client;
@@ -63,25 +61,33 @@ public class Abonnement {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
+		
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		
+		if (this.getClass() != obj.getClass())
 			return false;
+		
 		Abonnement other = (Abonnement) obj;
+		
 		if (date_debut == null) {
 			if (other.date_debut != null)
-				return false;
+				return false;		
 		} else if (!date_debut.equals(other.date_debut))
 			return false;
+		
 		if (date_fin == null) {
 			if (other.date_fin != null)
 				return false;
 		} else if (!date_fin.equals(other.date_fin))
 			return false;
+		
 		if (id_client != other.id_client)
 			return false;
+		
 		if (id_revue != other.id_revue)
 			return false;
+		
 		return true;
 	}
 }

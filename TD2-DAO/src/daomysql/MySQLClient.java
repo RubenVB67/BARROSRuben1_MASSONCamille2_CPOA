@@ -15,9 +15,7 @@ public class MySQLClient implements ClientIDAO {
 
 	private static MySQLClient instance;
 
-	public MySQLClient() {
-		super();
-	}
+	private MySQLClient() {}
 
 	public static MySQLClient getInstance() {
 
@@ -35,7 +33,16 @@ public class MySQLClient implements ClientIDAO {
 			PreparedStatement requete = laConnexion.prepareStatement("SELECT id_client,nom,prenom,no_rue,voie,code_postal,ville,pays FROM Client");
 			ResultSet res = requete.executeQuery();
 			while (res.next()) {
-				listeClient.add(new Client(res.getInt("id_client"),res.getString("nom"), res.getString("prenom"),res.getString("no_rue"),res.getString("voie"),res.getString("code_postal"),res.getString("ville"),res.getString("pays") ));
+				listeClient.add(new Client(
+						res.getInt("id_client"),
+						res.getString("nom"),
+						res.getString("prenom"),
+						res.getString("no_rue"),
+						res.getString("voie"),
+						res.getString("code_postal"),
+						res.getString("ville"),
+						res.getString("pays")
+						));
 			}
 			if (requete != null)
 				requete.close();
@@ -52,11 +59,19 @@ public class MySQLClient implements ClientIDAO {
 		Client Client = new Client();
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
-			PreparedStatement requete = laConnexion
-					.prepareStatement("SELECT nom,prenom,no_rue,voie,code_postal,ville,pays FROM Client WHERE id_client=" + id);
+			PreparedStatement requete = laConnexion.prepareStatement("SELECT nom,prenom,no_rue,voie,code_postal,ville,pays FROM Client WHERE id_client=" + id);
 			ResultSet res = requete.executeQuery();
 			res.next();
-			Client=new Client(id,res.getString("nom"), res.getString("prenom"),res.getString("no_rue"),res.getString("voie"),res.getString("code_postal"),res.getString("ville"),res.getString("pays"));
+			Client=new Client(
+					id,
+					res.getString("nom"),
+					res.getString("prenom"),
+					res.getString("no_rue"),
+					res.getString("voie"),
+					res.getString("code_postal"),
+					res.getString("ville"),
+					res.getString("pays")
+					);
 			if (requete != null)
 				requete.close();
 			if (res != null)
@@ -72,19 +87,19 @@ public class MySQLClient implements ClientIDAO {
 	}
 
 	@Override
-	public boolean create(Client object) {
+	public boolean create(Client cli) {
 		try { 
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement(
 					"INSERT INTO Client(nom,prenom,no_rue,voie,code_postal,ville,pays) VALUES(?,?,?,?,?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
-			requete.setString(1, object.getNom());
-			requete.setString(2, object.getPrenom());
-			requete.setString(3, object.getNo_rue());
-			requete.setString(4, object.getVoie());
-			requete.setString(5, object.getCode_postal());
-			requete.setString(6, object.getVille());
-			requete.setString(7, object.getPays());
+			requete.setString(1, cli.getNom());
+			requete.setString(2, cli.getPrenom());
+			requete.setString(3, cli.getNo_rue());
+			requete.setString(4, cli.getVoie());
+			requete.setString(5, cli.getCode_postal());
+			requete.setString(6, cli.getVille());
+			requete.setString(7, cli.getPays());
 			requete.executeUpdate();
 
 			ResultSet res = requete.getGeneratedKeys();
@@ -105,22 +120,20 @@ public class MySQLClient implements ClientIDAO {
 	}
 
 	@Override
-	public boolean update(Client object) {
+	public boolean update(Client cli) {
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion
 					.prepareStatement("UPDATE Client SET nom=?,prenom=?,no_rue=?,voie=?,code_postal=?,ville=?,pays=? WHERE id_client=?");
-			requete.setString(1, object.getNom());
-			requete.setString(2, object.getPrenom());
-			requete.setString(3, object.getNo_rue());
-			requete.setString(4, object.getVoie());
-			requete.setString(5, object.getCode_postal());
-			requete.setString(6, object.getVille());
-			requete.setString(7, object.getPays());
-			requete.setInt(8, object.getId());
+			requete.setString(1, cli.getNom());
+			requete.setString(2, cli.getPrenom());
+			requete.setString(3, cli.getNo_rue());
+			requete.setString(4, cli.getVoie());
+			requete.setString(5, cli.getCode_postal());
+			requete.setString(6, cli.getVille());
+			requete.setString(7, cli.getPays());
+			requete.setInt(8, cli.getId());
 			requete.executeUpdate();
-			System.out.println(object.getId());
-			System.out.println("Le Client a ete modifie.");
 			if (requete != null)
 				requete.close();
 			return true;
@@ -131,11 +144,11 @@ public class MySQLClient implements ClientIDAO {
 	}
 
 	@Override
-	public boolean delete(Client object) {
+	public boolean delete(Client cli) {
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			Statement requete = laConnexion.createStatement();
-			requete.executeUpdate("DELETE FROM Client WHERE id_client=" + object.getId());
+			requete.executeUpdate("DELETE FROM Client WHERE id_client=" + cli.getId());
 			if (requete != null)
 				requete.close();
 			return true;
@@ -144,6 +157,39 @@ public class MySQLClient implements ClientIDAO {
 			System.out.println("Pb select" + sqle.getMessage());
 			return false;
 		}
+	}
+
+	
+//---------------------------------- a faire plus tard -------------------------------------------------------------
+	
+	@Override
+	public ArrayList<Client> getByNomPrenom(String nom, String prenom) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Client> getByAdresse(int no_rue, String voie) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Client> getByCodePostal(int codepostal) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Client> getByVille(String ville) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Client> getByPays(String Pays) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
