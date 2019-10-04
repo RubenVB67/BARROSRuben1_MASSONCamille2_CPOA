@@ -1,9 +1,5 @@
 package metiers;
 
-import java.sql.*;
-
-import connexion.Connexion;
-
 public class Revue
 {
 
@@ -60,68 +56,5 @@ public class Revue
 		this.visuel = visuel;
 		this.id_periodicite = id_periodicite;
 	}
-	
-	
-	public void Ajouter(int id_revue, String titre, String description, int tarif_numero, String visuel, int id_periodicite) {
-		try {
-			Connection laConnexion = Connexion.getInstance().creeConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement("insert into Revue(id_revue,titre,description,tarif_numero,visuel,id_periodicite) values(?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
-			requete.setInt(6,id_periodicite);
-			requete.setString(5,visuel);
-			requete.setInt(4,id_revue);
-			requete.setString(3,description);
-			requete.setString(2,titre);
-			requete.setInt(1,id_revue);
-			requete.executeUpdate();
-			ResultSet res = requete.getGeneratedKeys();
-			if (res != null)
-				res.close();
-			if (requete != null)
-				requete.close();
-			if (laConnexion != null)
-				laConnexion.close();
-			System.out.println("Ajout effectué");
-		} catch (SQLException sqle) {
-			System.out.println("Il y'a un problème" + sqle.getMessage());
-		}
-	}
-	//si modif marche pas méthode val -> faire une fonction pour chaque champ
-	public void Modifier(int id_revue,String titre, String description, int tarif_numero, String visuel, int id_periodicite) {
-		try {
-			
-			Connection laConnexion = Connexion.getInstance().creeConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement("UPDATE Revue SET titre,description,tarif_numero,visuel,id_periodicite = ? WHERE id_revue= ?");
-			requete.setInt(6,id_periodicite);
-			requete.setString(5,visuel);
-			requete.setInt(4,id_revue);
-			requete.setString(3,description);
-			requete.setString(2,titre);
-			requete.setInt(1,id_revue);
-			requete.executeUpdate();
-			if (requete != null)
-				requete.close();
-			if (laConnexion != null)
-				laConnexion.close();
-			System.out.println("Modification effectué");
-		} catch (SQLException sqle) {
-			System.out.println("Il y'a un problème" + sqle.getMessage());
-		}
-	}
-	
-	public void Supprimer(int id_revue) {
-		try {
-			Connection laConnexion = Connexion.getInstance().creeConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement("delete from Revue where id_revue= ?");
-			requete.setInt(1,id_revue);
-			requete.executeUpdate();
-			if (requete != null)
-				requete.close();
-			if (laConnexion != null)
-				laConnexion.close();
-			System.out.println("Suppression effectué");
-		} catch (SQLException sqle) {
-			System.out.println("Il y'a un problème" + sqle.getMessage());
-		}
-	}
-	
+
 }

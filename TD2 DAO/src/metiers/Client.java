@@ -1,7 +1,4 @@
 package metiers;
-import java.sql.*;
-
-import connexion.Connexion;
 
 public class Client
 {
@@ -75,72 +72,5 @@ public class Client
 		this.ville = ville;
 		this.pays = pays;
 	}
-	
-	public void Ajouter(int id_client, String nom, String prenom, int no_rue, String voie, int code_postal, String ville,
-			String pays) {
-		try {
-			Connection laConnexion = Connexion.getInstance().creeConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement("insert into Client(id_client,nom,prenom,no_rue,voie,code_postal,ville,pays) values(?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
-			requete.setString(8,pays);
-			requete.setString(7,ville);
-			requete.setInt(6,code_postal);
-			requete.setString(5,voie);
-			requete.setInt(4,no_rue);
-			requete.setString(3,prenom);
-			requete.setString(2,nom);
-			requete.setInt(1,id_client);
-			requete.executeUpdate();
-			ResultSet res = requete.getGeneratedKeys();
-			if (res != null)
-				res.close();
-			if (requete != null)
-				requete.close();
-			if (laConnexion != null)
-				laConnexion.close();
-			System.out.println("Ajout effectué");
-		} catch (SQLException sqle) {
-			System.out.println("Il y'a un problème" + sqle.getMessage());
-		}
-	}
-	//si modif marche pas méthode val -> faire une fonction pour chaque champ
-	public void Modifier(int id_client, String nom, String prenom, int no_rue, String voie, int code_postal, String ville,
-			String pays) {
-		try {
-			
-			Connection laConnexion = Connexion.getInstance().creeConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement("UPDATE Client SET nom,prenom,no_rue,voie,code_postal,ville,pays = ? WHERE id_client= ?");
-			requete.setString(8,pays);
-			requete.setString(7,ville);
-			requete.setInt(6,code_postal);
-			requete.setString(5,voie);
-			requete.setInt(4,no_rue);
-			requete.setString(3,prenom);
-			requete.setString(2,nom);
-			requete.setInt(1,id_client);
-			requete.executeUpdate();
-			if (requete != null)
-				requete.close();
-			if (laConnexion != null)
-				laConnexion.close();
-			System.out.println("Modification effectué");
-		} catch (SQLException sqle) {
-			System.out.println("Il y'a un problème" + sqle.getMessage());
-		}
-	}
-	
-	public void Supprimer(int id_revue) {
-		try {
-			Connection laConnexion = Connexion.getInstance().creeConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement("delete from Client where id_client= ?");
-			requete.setInt(1,id_client);
-			requete.executeUpdate();
-			if (requete != null)
-				requete.close();
-			if (laConnexion != null)
-				laConnexion.close();
-			System.out.println("Suppression effectué");
-		} catch (SQLException sqle) {
-			System.out.println("Il y'a un problème" + sqle.getMessage());
-		}
-	}
+
 }
