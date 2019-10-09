@@ -39,8 +39,12 @@ public class ListePeriodicite implements PeriodiciteIDAO{
 
 	@Override
 	public boolean create(Periodicite per) {
-		per.setId(3);
-		while (this.donnees.contains(per)) {
+		per.setId(1);
+		
+		ArrayList<Integer> lid = new ArrayList<Integer>();
+		for(Periodicite p : this.donnees) lid.add(p.getId());
+		
+		while (lid.contains(per.getId())) {
 
 			per.setId(per.getId() + 1);
 		}

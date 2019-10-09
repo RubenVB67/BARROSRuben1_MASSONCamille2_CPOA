@@ -4,31 +4,63 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import daofactory.DAOFactory;
+import daofactory.Persistance;
+import daoobjects.PeriodiciteIDAO;
+import metiers.Periodicite;
+
 class TestListePeriodicite {
 
+	PeriodiciteIDAO lper = DAOFactory.getDAOFactory(Persistance.Liste).getPeriodiciteDAO();
+	
 	@Test
-	void testFindAll() {
-		fail("Not yet implemented");
+	void testCreate() {	
+		Periodicite per = new Periodicite(11, "test");
+			
+		if(!lper.create(per)) {
+			fail("Pas implemente");
+		}
+		lper.delete(per);
 	}
 
 	@Test
-	void testCreate() {
-		fail("Not yet implemented");
+	void testDelete() {	
+		Periodicite per = new Periodicite(22, "test");
+		lper.create(per);
+	
+		if(!lper.delete(per)) {
+			fail("Pas supprime");
+		}
 	}
 
 	@Test
-	void testUpdate() {
-		fail("Not yet implemented");
+	void testUpdate() {	
+		Periodicite per = new Periodicite(33, "test");
+		lper.create(per);
+		
+		if(!lper.update(per)) { 
+			fail("Pas modifie");
+		}
+		lper.delete(per);
 	}
 
 	@Test
-	void testDelete() {
-		fail("Not yet implemented");
+	void testGetById() {	
+		Periodicite per = new Periodicite(44, "test");
+		lper.create(per);
+		
+		if(!lper.getById(per.getId()).equals(per)) {
+			lper.delete(per);
+			fail("Pas trouve");			
+		}
+		lper.delete(per);
 	}
 
 	@Test
-	void testGetById() {
-		fail("Not yet implemented");
+	void testFindAll() {		
+		if(lper.findAll()==null)
+		fail("Pas trouve");
+		
 	}
 
 }
