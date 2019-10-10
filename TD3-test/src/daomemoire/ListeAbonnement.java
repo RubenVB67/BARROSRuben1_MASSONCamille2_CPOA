@@ -65,13 +65,11 @@ public class ListeAbonnement implements AbonnementIDAO{
 		Abonnement abon = null;
 
 		int idx = this.ListeAbo.indexOf(abo);
-		System.out.println(idx);
-		System.out.println(this.ListeAbo.get(idx).getId_client());
-		if (idx == -1) {
-			throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
-		} else {
-			abo = this.ListeAbo.remove(idx);
-		}
+		if (idx == -1)
+		throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
+		
+		abon = this.ListeAbo.remove(idx);
+		
 		return abo.equals(abon);
 	}
 
