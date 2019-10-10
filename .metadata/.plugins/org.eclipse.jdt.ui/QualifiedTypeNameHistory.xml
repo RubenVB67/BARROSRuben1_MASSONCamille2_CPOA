@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="daofactory.DAOFactory"/>
+<fullyQualifiedTypeName name="daofactory.Persistance"/>
+<fullyQualifiedTypeName name="daoobjects.PeriodiciteIDAO"/>
+<fullyQualifiedTypeName name="metiers.Periodicite"/>
+</qualifiedTypeNameHistroy>

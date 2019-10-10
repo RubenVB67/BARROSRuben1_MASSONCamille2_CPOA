@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import daoobjects.RevueIDAO;
+import metiers.Periodicite;
 import metiers.Revue;
 
 public class ListeRevue implements RevueIDAO{
@@ -39,7 +40,12 @@ public class ListeRevue implements RevueIDAO{
 
 	@Override
 	public boolean create(Revue rev) {
-		while (this.donnees.contains(rev)) {
+		rev.setId_revue(1);
+		
+		ArrayList<Integer> lid = new ArrayList<Integer>();
+		for(Revue p : this.donnees) lid.add(p.getId_revue());
+		
+		while (lid.contains(rev.getId_revue())) {
 
 			rev.setId_revue(rev.getId_revue() + 1);
 		}

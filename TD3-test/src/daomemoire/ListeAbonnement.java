@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import daoobjects.AbonnementIDAO;
 import metiers.Abonnement;
+import metiers.Revue;
 
 public class ListeAbonnement implements AbonnementIDAO{
 	private static ListeAbonnement instance;
@@ -34,6 +35,15 @@ public class ListeAbonnement implements AbonnementIDAO{
 
 	@Override
 	public boolean create(Abonnement abo) {
+		
+		for(Abonnement p : this.ListeAbo) {
+			if ( (p.getId_client() == abo.getId_client()) && (p.getId_revue() == abo.getId_revue()) ) {
+				
+				System.out.println("abonnement existant deja !");
+				return false;
+			}
+		}
+		
 		boolean ok = this.ListeAbo.add(abo);
 		return ok;
 
@@ -55,6 +65,8 @@ public class ListeAbonnement implements AbonnementIDAO{
 		Abonnement abon = null;
 
 		int idx = this.ListeAbo.indexOf(abo);
+		System.out.println(idx);
+		System.out.println(this.ListeAbo.get(idx).getId_client());
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
 		} else {
