@@ -17,7 +17,7 @@ public class Launcher extends Application{
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Ajout d'une peridicite");
+			primaryStage.setTitle("Ajout d'une revue");
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

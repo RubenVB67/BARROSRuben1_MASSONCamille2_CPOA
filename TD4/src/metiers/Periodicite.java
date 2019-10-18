@@ -13,7 +13,6 @@ public class Periodicite {
 	public Periodicite() {
 	}
 	
-	
 	public int getId() {
 		return id_periodicite;
 	}
@@ -28,9 +27,8 @@ public class Periodicite {
 	}
 	@Override
 	public String toString() {
-		return "PeriodiciteM [id_periodicite=" + id_periodicite + ", libelle=" + libelle + "]";
+		return "Periodicite [id_periodicite=" + id_periodicite + ", libelle=" + libelle + "]";
 	}
-	
 	
 	@Override
 	public boolean equals(Object obj) {
