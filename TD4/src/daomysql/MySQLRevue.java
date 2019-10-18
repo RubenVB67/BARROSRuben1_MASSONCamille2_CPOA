@@ -13,9 +13,7 @@ import metiers.Revue;
 public class MySQLRevue implements RevueIDAO{
 	private static MySQLRevue instance;
 
-	public MySQLRevue() {
-		super();
-	}
+	private MySQLRevue() {}
 
 	public static MySQLRevue getInstance() {
 
@@ -30,13 +28,18 @@ public class MySQLRevue implements RevueIDAO{
 		Revue Revue = new Revue();
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement(
-					"SELECT id_revue,titre,description,tarif_numero,visuel,id_periodicite FROM Revue WHERE id_Revue=?");
+			PreparedStatement requete = laConnexion.prepareStatement("SELECT id_revue,titre,description,tarif_numero,visuel,id_periodicite FROM Revue WHERE id_Revue=?");
 			requete.setInt(1,id);
 			ResultSet res = requete.executeQuery();
 			res.next();
-			Revue = new Revue(res.getInt("id_revue"), res.getString("titre"), res.getString("description"),
-					res.getDouble("tarif_numero"), res.getString("visuel"), res.getInt("id_periodicite"));
+			Revue = new Revue(
+					res.getInt("id_revue"),
+					res.getString("titre"),
+					res.getString("description"),
+					res.getDouble("tarif_numero"),
+					res.getString("visuel"),
+					res.getInt("id_periodicite")
+					);
 			if (requete != null)
 				requete.close();
 			if (res != null)
@@ -60,8 +63,14 @@ public class MySQLRevue implements RevueIDAO{
 			ResultSet res = requete.executeQuery();
 			while (res.next()) {
 
-				listeRevue.add(new Revue(res.getInt("id_revue"), res.getString("titre"), res.getString("description"),
-						res.getDouble("tarif_numero"), res.getString("visuel"), res.getInt("id_periodicite")));
+				listeRevue.add(new Revue(
+						res.getInt("id_revue"),
+						res.getString("titre"),
+						res.getString("description"),
+						res.getDouble("tarif_numero"),
+						res.getString("visuel"),
+						res.getInt("id_periodicite")
+						));
 			}
 			if (requete != null)
 				requete.close();
@@ -75,17 +84,17 @@ public class MySQLRevue implements RevueIDAO{
 	}
 
 	@Override
-	public boolean create(Revue object) {
+	public boolean create(Revue rev) {
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement(
 					"INSERT INTO Revue(titre,description,tarif_numero,visuel,id_periodicite) VALUES(?,?,?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
-			requete.setString(1, object.getTitre());
-			requete.setString(2, object.getDescription());
-			requete.setDouble(3, object.getTarif_numero());
-			requete.setString(4, object.getVisuel());
-			requete.setInt(5, object.getId_periodicite());
+			requete.setString(1, rev.getTitre());
+			requete.setString(2, rev.getDescription());
+			requete.setDouble(3, rev.getTarif_numero());
+			requete.setString(4, rev.getVisuel());
+			requete.setInt(5, rev.getId_periodicite());
 			requete.executeUpdate();
 
 			if (requete != null)
@@ -99,18 +108,18 @@ public class MySQLRevue implements RevueIDAO{
 	}
 
 	@Override
-	public boolean update(Revue object) {
+	public boolean update(Revue rev) {
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement(
 					"UPDATE Revue SET titre=?,description=?,tarif_numero=?,visuel=?,id_periodicite=? WHERE id_Revue=?");
 
-			requete.setString(1, object.getTitre());
-			requete.setString(2, object.getDescription());
-			requete.setDouble(3, object.getTarif_numero());
-			requete.setString(4, object.getVisuel());
-			requete.setInt(5, object.getId_periodicite());
-			requete.setInt(6, object.getId_revue());
+			requete.setString(1, rev.getTitre());
+			requete.setString(2, rev.getDescription());
+			requete.setDouble(3, rev.getTarif_numero());
+			requete.setString(4, rev.getVisuel());
+			requete.setInt(5, rev.getId_periodicite());
+			requete.setInt(6, rev.getId_revue());
 			requete.executeUpdate();
 			System.out.println("Le Revue a �t� modifi�.");
 			if (requete != null)
@@ -122,11 +131,11 @@ public class MySQLRevue implements RevueIDAO{
 	}
 	}
 	@Override
-	public boolean delete(Revue object) {
+	public boolean delete(Revue rev) {
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			Statement requete = laConnexion.createStatement();
-			requete.executeUpdate("DELETE FROM Revue WHERE id_Revue="+ object.getId_revue());
+			requete.executeUpdate("DELETE FROM Revue WHERE id_Revue="+ rev.getId_revue());
 			if (requete != null)
 				requete.close();
 			return true;
@@ -135,5 +144,38 @@ public class MySQLRevue implements RevueIDAO{
 			System.out.println("Pb select" + sqle.getMessage());
 			return false;
 		}
+	}
+	
+	
+//---------------------------------- a faire plus tard -------------------------------------------------------------
+
+	@Override
+	public ArrayList<Revue> getByTitre(String titre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Revue> getByDescription(String description) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Revue> getByTarif(int tarif_numero) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Revue> getByVisuel(String visuel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Revue> getByPeriodicite(int id_periodicite) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

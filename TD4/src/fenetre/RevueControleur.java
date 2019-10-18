@@ -128,16 +128,16 @@ public class RevueControleur{
 	}
 
 	boolean texteSeulement(String texte) {
-		texte = texte.replace("é", "e");
-		texte = texte.replace("ô", "o");
-		texte = texte.replace("ï", "i");
+		texte = texte.replace("ï¿½", "e");
+		texte = texte.replace("ï¿½", "o");
+		texte = texte.replace("ï¿½", "i");
 		if (!texte.matches("[a-zA-z\\s]*"))
 			return false;
 		else
 			return true;
 	}
 
-	// Renvois vrai si il y a un élément vide
+	// Renvois vrai si il y a un ï¿½lï¿½ment vide
 	boolean champVide() {
 		return this.txt_description.getText().isEmpty() || this.txt_tarif.getText().isEmpty()
 				|| this.txt_titre.getText().isEmpty();
@@ -145,7 +145,7 @@ public class RevueControleur{
 
 	boolean champCorrecte() {
 		//REGEX TROUVE SUR STACKOVERFLOW
-		//PREND EN COMPTE BEAUCOUP DE CAS(INFINI, POSITIF ETC...)
+		//PREND EN COMPTE BEAUCOUP DE CAS (INFINI, POSITIF ETC...)
 		boolean reponse = true;
 		if (!texteSeulement(this.txt_titre.getText())) {
 			this.lbl_erreurtitre.setVisible(true);
