@@ -6,7 +6,6 @@ import metiers.Periodicite;
 
 public interface PeriodiciteIDAO extends IDAO<Periodicite>{
 
-<<<<<<< HEAD
 	@Override
     public abstract ArrayList<Periodicite> findAll();
 	@Override
@@ -20,9 +19,6 @@ public interface PeriodiciteIDAO extends IDAO<Periodicite>{
 	
 	
 	public abstract ArrayList <Periodicite>getByLibelle(String libelle);
-=======
-	public abstract Periodicite getById(int id);
->>>>>>> 509b770864a6dee7ba0d4f0e59639ed62484fcc1
 	
 
 }

@@ -1,4 +1,3 @@
 INDEX VERSION 1.131+/home/masson236u/workspace/.metadata/.plugins/org.eclipse.jdt.core
-1879484474.index
 2565720620.index
 117545132.index
