@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package daoobjects;
 import java.util.ArrayList;
 
@@ -25,3 +26,12 @@ public interface RevueIDAO extends IDAO<Revue>{
 	public abstract ArrayList <Revue>getByPeriodicite(int id_periodicite);
 	
 }
+=======
+package daoobjects;
+import daofactory.IDAO;
+import metiers.Revue;
+
+public interface RevueIDAO extends IDAO<Revue>{
+    public abstract Revue getById(int id_r);
+}
+>>>>>>> 509b770864a6dee7ba0d4f0e59639ed62484fcc1
