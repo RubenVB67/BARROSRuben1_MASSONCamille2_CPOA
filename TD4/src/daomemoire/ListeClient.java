@@ -34,14 +34,17 @@ public class ListeClient implements ClientIDAO{
 
 	@Override
 	public boolean create(Client cli) {
-		if (this.ListeClient.size() == 0) {
-			cli.setId(0);
-		} else {
-			int id = this.ListeClient.get(this.ListeClient.size() - 1).getId() + 1;
-			cli.setId(id);
-		}
+		cli.setId(1);
+		
+		ArrayList<Integer> lic = new ArrayList<Integer>();
+		for(Client c : this.ListeClient) lic.add(c.getId());
+		
+		while (lic.contains(cli.getId())) {
 
+			cli.setId(cli.getId() + 1);
+		}
 		boolean ok = this.ListeClient.add(cli);
+		
 		return ok;
 	}
 

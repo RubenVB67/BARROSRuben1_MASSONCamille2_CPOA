@@ -36,8 +36,8 @@ public class ListeAbonnement implements AbonnementIDAO{
 	@Override
 	public boolean create(Abonnement abo) {
 		
-		for(Abonnement p : this.ListeAbo) {
-			if ( (p.getId_client() == abo.getId_client()) && (p.getId_revue() == abo.getId_revue()) ) {
+		for(Abonnement a : this.ListeAbo) {
+			if ( (a.getId_client() == abo.getId_client()) && (a.getId_revue() == abo.getId_revue()) ) {
 				
 				System.out.println("abonnement existant deja !");
 				return false;

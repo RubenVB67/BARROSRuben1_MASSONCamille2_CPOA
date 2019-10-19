@@ -4,7 +4,7 @@
  <properties>
  <entry key="bdd">barros4u_cpoa</entry>
  <entry key="login">barros4u_appli</entry>
- <entry key="pass">31717855</entry>
  <entry key="port">3306</entry>
+ <entry key="pass">31717855</entry>
 <entry key="url">jdbc:mysql://devbdd.iutmetz.univ-lorraine.fr:3306/barros4u_cpoa?serverTimezone=Europe/Paris</entry>
 </properties>

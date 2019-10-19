@@ -77,7 +77,7 @@ public class MySQLPeriodicite implements PeriodiciteIDAO{
 	public boolean create(Periodicite per) {
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement("INSERT INTO Periodicite(libelle) VALUES(?,?)",Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement requete = laConnexion.prepareStatement("INSERT INTO Periodicite(libelle) VALUES(?)",Statement.RETURN_GENERATED_KEYS);
 			requete.setString(1, per.getLibelle());
 			requete.executeUpdate();
 			
