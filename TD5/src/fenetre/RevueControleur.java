@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 import daofactory.DAOFactory;
 import daofactory.Persistance;
+import daoobjects.AbonnementIDAO;
 import daoobjects.PeriodiciteIDAO;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -97,11 +98,17 @@ public class RevueControleur{
 
 	@FXML
 	void supprimer() {
+		System.out.println("1"); //en cours de modif
 		this.lbl_champsvides.setVisible(false);
+		System.out.println("2");
 		this.lbl_erreurdescription.setVisible(false);
+		System.out.println("3");
 		this.lbl_erreurperio.setVisible(false);
+		System.out.println("4");
 		this.lbl_erreurtarif.setVisible(false);
+		System.out.println("5");
 		this.lbl_erreurtitre.setVisible(false);
+		System.out.println("6");
 		this.lbl_affichage.setText("");
 		this.cbx_periodicite.getSelectionModel().clearSelection();
 		this.txt_description.clear();
@@ -113,33 +120,42 @@ public class RevueControleur{
 
 	@FXML
 	void afficher() {
+		this.lbl_affichage.setText("");
 		Revue rev = null;
 		if (!champVide()) {
 			if (champCorrecte()) {
 				rev = new Revue(this.txt_titre.getText().trim(), this.txt_description.getText().trim(),
 						Double.valueOf(this.txt_tarif.getText().trim()), this.txt_titre.getText().trim() + ".jpg",
 						this.cbx_periodicite.getSelectionModel().getSelectedItem().getId());
-				dao.getRevueDAO().create(rev);
-				this.lbl_affichage.setText(rev.toString());
-				supprimer();
+				if(! (this.rdb_liste.isSelected() || this.rdb_sql.isSelected() ) ) {
+					this.lbl_affichage.setText("selectionner un mode de donnÃ©es");
+				}
+				else if(this.rdb_liste.isSelected()) {
+					dao = DAOFactory.getDAOFactory(Persistance.Liste);
+					dao.getRevueDAO().create(rev);
+					this.lbl_affichage.setText(rev.toString());
+					supprimer();
+				}
+				
 			}
 		} else
 			this.lbl_champsvides.setVisible(true);
 	}
 
 	boolean texteSeulement(String texte) {
-		texte = texte.replace("é", "e");
-		texte = texte.replace("ô", "o");
-		texte = texte.replace("ï", "i");
+		texte = texte.replace("ï¿½", "e");
+		texte = texte.replace("ï¿½", "o");
+		texte = texte.replace("ï¿½", "i");
 		if (!texte.matches("[a-zA-z\\s]*"))
 			return false;
 		else
 			return true;
 	}
 
-	// Renvois vrai si il y a un élément vide
+	// Renvois vrai si il y a un ï¿½lï¿½ment vide
 	boolean champVide() {
-		return this.txt_description.getText().isEmpty() || this.txt_tarif.getText().isEmpty()
+		return this.txt_description.getText().isEmpty() 
+				|| this.txt_tarif.getText().isEmpty()
 				|| this.txt_titre.getText().isEmpty();
 	}
 

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
@@ -88,8 +89,11 @@
             </FlowPane>
             <FlowPane fx:id="flp_affich" prefHeight="75.0" prefWidth="200.0">
                <children>
-                  <RadioButton fx:id="rdb_sql" mnemonicParsing="false" text="MySQL" />
-                  <RadioButton fx:id="rdb_liste" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Liste" />
+                  <RadioButton fx:id="rdb_sql" mnemonicParsing="false" text="MySQL">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="radio1" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton fx:id="rdb_liste" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Liste" toggleGroup="$radio1" />
                   <Label fx:id="lbl_affichage" alignment="CENTER">
                      <FlowPane.margin>
                         <Insets left="230.0" top="25.0" />
