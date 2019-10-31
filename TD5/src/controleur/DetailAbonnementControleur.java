@@ -23,10 +23,10 @@ public class DetailAbonnementControleur {
     private Button btn_valider;
 
     @FXML
-    private TextField lbl_idclient;
+    private TextField txt_idclient;
 
     @FXML
-    private TextField lbl_idrevue;
+    private TextField txt_idrevue;
 
     @FXML
     private Label lbl_erreuridclient;
@@ -47,24 +47,18 @@ public class DetailAbonnementControleur {
     private DatePicker dtp_datefin;
 
     @FXML
-    void Valider(ActionEvent event) {
-    	lbl_idclient.setEditable(false);
-    	lbl_idrevue.setEditable(false);
-    	dtp_datedebut.setEditable(false);
-    	dtp_datefin.setEditable(false);
-    }
-
-    @FXML
     void modifier(ActionEvent event) {
-    	lbl_idclient.setEditable(true);
-    	lbl_idrevue.setEditable(true);
-    	dtp_datedebut.setEditable(true);
-    	dtp_datefin.setEditable(true);
+
     }
 
     @FXML
     void retour(ActionEvent event) {
-    	
+
+    }
+
+    @FXML
+    void valider(ActionEvent event) {
+
     }
 
 }

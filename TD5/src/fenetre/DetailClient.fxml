@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.DetailClientControleur">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -17,7 +17,7 @@
             <Label layoutX="38.0" layoutY="115.0" text="Numéro de rue : " />
             <Button fx:id="btn_modifier" layoutX="135.0" layoutY="344.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
             <Button fx:id="btn_retour" layoutX="399.0" layoutY="344.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
-            <Button fx:id="btn_valider" disable="true" layoutX="143.0" layoutY="308.0" mnemonicParsing="false" text="Valider" />
+            <Button fx:id="btn_valider" disable="true" layoutX="143.0" layoutY="308.0" mnemonicParsing="false" onAction="#valider" text="Valider" />
             <Label layoutX="36.0" layoutY="157.0" text="Voie :" />
             <Label layoutX="33.0" layoutY="192.0" text="Code Postal :" />
             <Label layoutX="36.0" layoutY="224.0" text="Ville :" />

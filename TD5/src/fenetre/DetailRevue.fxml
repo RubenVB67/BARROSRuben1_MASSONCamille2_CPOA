@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.DetailRevueControleur">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -16,15 +16,15 @@
             <Label fx:id="lbl_titre" layoutX="84.0" layoutY="107.0" text="Titre :" />
             <Label fx:id="lbl_idperiodicite" layoutX="39.0" layoutY="61.0" text="Id Periodicite :" />
             <Label fx:id="lbl_idrevue" layoutX="58.0" layoutY="17.0" text="Id Revue :" />
-            <TextField fx:id="txt_tarif" layoutX="151.0" layoutY="233.0" />
-            <TextField fx:id="txt_visuel" layoutX="151.0" layoutY="188.0" />
-            <TextField fx:id="txt_description" layoutX="151.0" layoutY="148.0" />
-            <TextField fx:id="txt_titre" layoutX="151.0" layoutY="103.0" />
-            <TextField fx:id="txt_idperiodicite" layoutX="151.0" layoutY="57.0" />
-            <TextField fx:id="txt_idrevue" layoutX="151.0" layoutY="13.0" />
-            <Button fx:id="btn_annuler" layoutX="420.0" layoutY="319.0" mnemonicParsing="false" text="Annuler" />
-            <Button fx:id="btn_modifier" layoutX="143.0" layoutY="319.0" mnemonicParsing="false" text="Modifier" />
-            <Button fx:id="btn_valider" layoutX="151.0" layoutY="277.0" mnemonicParsing="false" text="Valider" />
+            <TextField fx:id="txt_tarif" disable="true" layoutX="151.0" layoutY="233.0" />
+            <TextField fx:id="txt_visuel" disable="true" layoutX="151.0" layoutY="188.0" />
+            <TextField fx:id="txt_description" disable="true" layoutX="151.0" layoutY="148.0" />
+            <TextField fx:id="txt_titre" disable="true" layoutX="151.0" layoutY="103.0" />
+            <TextField fx:id="txt_idperiodicite" disable="true" layoutX="151.0" layoutY="57.0" />
+            <TextField fx:id="txt_idrevue" disable="true" layoutX="151.0" layoutY="13.0" />
+            <Button fx:id="btn_retour" layoutX="420.0" layoutY="319.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
+            <Button fx:id="btn_modifier" layoutX="143.0" layoutY="319.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
+            <Button fx:id="btn_valider" disable="true" layoutX="151.0" layoutY="277.0" mnemonicParsing="false" onAction="#valider" text="Valider" />
             <Label fx:id="lbl_erreuridrevue" layoutX="343.0" layoutY="17.0" text="Il manque un id de revue" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreuridperiodicite" layoutX="343.0" layoutY="61.0" text="Il manque un id de periodicite" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurtitre" layoutX="343.0" layoutY="107.0" text="Il manque un titre" textFill="RED" visible="false" />

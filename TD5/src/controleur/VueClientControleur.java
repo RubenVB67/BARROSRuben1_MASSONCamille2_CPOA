@@ -5,11 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableView;
+import metiers.Client;
 
 public class VueClientControleur {
 
     @FXML
-    private TableView<?> tbl_client;
+    private TableView<Client> tbl_client;
 
     @FXML
     private Button btn_abonnement;

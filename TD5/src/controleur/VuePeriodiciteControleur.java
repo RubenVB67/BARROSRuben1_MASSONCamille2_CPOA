@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
+import metiers.Periodicite;
 
 public class VuePeriodiciteControleur {
 
@@ -13,7 +14,7 @@ public class VuePeriodiciteControleur {
     private Pane pnl_center;
 
     @FXML
-    private TableView<?> tbl_periodicite;
+    private TableView<Periodicite> tbl_periodicite;
 
     @FXML
     private Pane pnl_top;

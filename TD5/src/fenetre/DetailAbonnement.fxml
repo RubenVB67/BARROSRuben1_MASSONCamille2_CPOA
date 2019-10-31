@@ -13,13 +13,13 @@
          <children>
             <Button fx:id="btn_modifier" layoutX="127.0" layoutY="284.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
             <Button fx:id="btn_retour" layoutX="372.0" layoutY="284.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
-            <Button fx:id="btn_valider" disable="true" layoutX="136.0" layoutY="233.0" mnemonicParsing="false" onAction="#Valider" text="Valider" />
+            <Button fx:id="btn_valider" disable="true" layoutX="136.0" layoutY="233.0" mnemonicParsing="false" onAction="#valider" text="Valider" />
             <Label layoutX="43.0" layoutY="90.0" text="Id_revue :" />
             <Label layoutX="41.0" layoutY="144.0" text="Date debut :" />
             <Label layoutX="43.0" layoutY="192.0" text="Date fin :" />
             <Label layoutX="42.0" layoutY="47.0" text="Id_client :" />
-            <TextField fx:id="lbl_idclient" disable="true" layoutX="138.0" layoutY="43.0" />
-            <TextField fx:id="lbl_idrevue" disable="true" layoutX="138.0" layoutY="95.0" />
+            <TextField fx:id="txt_idclient" disable="true" layoutX="138.0" layoutY="43.0" />
+            <TextField fx:id="txt_idrevue" disable="true" layoutX="138.0" layoutY="95.0" />
             <Label fx:id="lbl_erreuridclient" layoutX="358.0" layoutY="47.0" text="Il manque un id client" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreuridrevue" layoutX="358.0" layoutY="98.0" text="Il manque un id revue" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurdatedebut" layoutX="358.0" layoutY="144.0" text="Il manque une date de debut" textFill="RED" visible="false" />
