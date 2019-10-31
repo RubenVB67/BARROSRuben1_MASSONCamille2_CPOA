@@ -55,7 +55,6 @@
                   <Insets top="5.0" />
                </padding>
             </TextField>
-            <Label fx:id="lbl_erreuridclient" layoutX="399.0" layoutY="7.0" text="Il manque un id client" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurnom" layoutX="399.0" layoutY="43.0" text="Il manque un nom" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurprenom" layoutX="399.0" layoutY="79.0" text="Il manque un prenom" visible="false" />
             <Label fx:id="lbl_erreurnumeroderue" layoutX="399.0" layoutY="114.0" text="Il manque un numero de rue" textFill="RED" visible="false" />
