@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -26,8 +25,6 @@
             <Button fx:id="btn_client" layoutX="187.0" layoutY="17.0" mnemonicParsing="false" onAction="#redirigerClient" text="Client" />
             <Button fx:id="btn_periodicite" layoutX="252.0" layoutY="17.0" mnemonicParsing="false" onAction="#redirigerPeriodicite" text="Periodicite" />
             <Button fx:id="btn_revue" layoutX="341.0" layoutY="17.0" mnemonicParsing="false" onAction="#redirigerRevue" text="Revue" />
-            <RadioButton fx:id="rdb_sql" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" text="MySQL" />
-            <RadioButton fx:id="rdb_liste" layoutX="80.0" layoutY="21.0" mnemonicParsing="false" text="Liste" />
          </children>
       </Pane>
    </children>
