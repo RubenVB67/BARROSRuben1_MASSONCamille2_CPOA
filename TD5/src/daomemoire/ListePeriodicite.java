@@ -25,11 +25,8 @@ public class ListePeriodicite implements PeriodiciteIDAO{
 
 		this.donnees = new ArrayList<Periodicite>();
 
-		this.donnees.add(new Periodicite(1, "Quotidien"));
-		this.donnees.add(new Periodicite(2, "Hebdomadaire"));
-		this.donnees.add(new Periodicite(3, "Mensuel"));
-		this.donnees.add(new Periodicite(4, "Bimestriel"));
-		this.donnees.add(new Periodicite(5, "Trimestriel"));
+		this.donnees.add(new Periodicite(1, "Mensuel"));
+		this.donnees.add(new Periodicite(2, "Quotidien"));
 	}
 	
 	@Override
@@ -38,54 +35,53 @@ public class ListePeriodicite implements PeriodiciteIDAO{
 	}
 
 	@Override
-	public boolean create(Periodicite per) {
-		per.setId(1);
-		
-		ArrayList<Integer> lid = new ArrayList<Integer>();
-		for(Periodicite p : this.donnees) lid.add(p.getId());
-		
-		while (lid.contains(per.getId())) {
+	public boolean create(Periodicite object) {
+		object.setId(3);
+		// Ne fonctionne que si l'objet m�tier est bien fait...
+		while (this.donnees.contains(object)) {
 
-			per.setId(per.getId() + 1);
+			object.setId(object.getId() + 1);
 		}
-		boolean ok = this.donnees.add(per);
+		boolean ok = this.donnees.add(object);
 		
 		return ok;
 	}
 
 	@Override
-	public boolean update(Periodicite per) {
-		int idx = this.donnees.indexOf(per);
+	public boolean update(Periodicite object) {
+		int idx = this.donnees.indexOf(object);
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
 		} else {
 			
-			this.donnees.set(idx, per);
+			this.donnees.set(idx, object);
 		}
 		
 		return true;
 	}
 
 	@Override
-	public boolean delete(Periodicite per) {
+	public boolean delete(Periodicite object) {
 		Periodicite supprime;
-		int idx = this.donnees.indexOf(per);
+		
+		// Ne fonctionne que si l'objet m�tier est bien fait...
+		int idx = this.donnees.indexOf(object);
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
 		} else {
 			supprime = this.donnees.remove(idx);
 		}
 		
-		return per.equals(supprime);
+		return object.equals(supprime);
 	}
 
 	@Override
-	public Periodicite getById(int id) {
+	public Periodicite getById(int id_perio) {
 		Periodicite perio = new Periodicite();
 		boolean trouve=false;
 		int i=0;
 		while (trouve==false && i<this.donnees.size()){
-			if (this.donnees.get(i).getId() == id) {
+			if (this.donnees.get(i).getId() == id_perio) {
 				perio = this.donnees.get(i);
 				trouve=true;
 				}
@@ -93,19 +89,9 @@ public class ListePeriodicite implements PeriodiciteIDAO{
 				i++;			
 		}
 		if(i>=this.donnees.size()){
-			System.out.println("Pas de periodicite avec cet id_periodicite");
+			System.out.println("Aucune p�riodicit� avec avec cet id");
 			perio=null;}
 		return perio;
-	}
-
-	
-//---------------------------------- a faire plus tard -------------------------------------------------------------
-
-	
-	@Override
-	public ArrayList<Periodicite> getByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

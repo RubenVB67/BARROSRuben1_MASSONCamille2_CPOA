@@ -1,19 +1,18 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.time.LocalDate;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import daofactory.DAOFactory;
 import daofactory.Persistance;
 import daoobjects.AbonnementIDAO;
+import junit.framework.TestCase;
 import metiers.Abonnement;
 
-class TestListeAbonnement {
+public class TestListeAbonnement extends TestCase {
 
-	AbonnementIDAO abon = DAOFactory.getDAOFactory(Persistance.Liste).getAbonnementDAO();
+AbonnementIDAO abon = DAOFactory.getDAOFactory(Persistance.Liste).getAbonnementDAO();
 	
 	@Test
 	void testCreate() {
@@ -78,5 +77,4 @@ class TestListeAbonnement {
 		}
 		abon.delete(abo);
 	}
-
 }

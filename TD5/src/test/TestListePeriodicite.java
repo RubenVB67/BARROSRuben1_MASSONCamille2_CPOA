@@ -1,17 +1,18 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
 
 import daofactory.DAOFactory;
 import daofactory.Persistance;
 import daoobjects.PeriodiciteIDAO;
 import metiers.Periodicite;
 
-class TestListePeriodicite {
+public class TestListePeriodicite {
 
-	PeriodiciteIDAO lper = DAOFactory.getDAOFactory(Persistance.Liste).getPeriodiciteDAO();
+PeriodiciteIDAO lper = DAOFactory.getDAOFactory(Persistance.Liste).getPeriodiciteDAO();
 	
 	@Test
 	void testCreate() {	

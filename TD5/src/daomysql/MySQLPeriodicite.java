@@ -14,7 +14,9 @@ import metiers.Periodicite;
 public class MySQLPeriodicite implements PeriodiciteIDAO{
 	private static MySQLPeriodicite instance;
 
-	private MySQLPeriodicite() {}
+	public MySQLPeriodicite() {
+		super();
+	}
 
 	public static MySQLPeriodicite getInstance() {
 
@@ -33,10 +35,7 @@ public class MySQLPeriodicite implements PeriodiciteIDAO{
 			requete.setInt(1,id);
 			ResultSet res = requete.executeQuery();
 			res.next();
-			Periodicite = new Periodicite(
-					id,
-					res.getString("libelle")
-					);
+			Periodicite = new Periodicite(id, res.getString("libelle"));
 			if (requete != null)
 				requete.close();
 			if (res != null)
@@ -45,6 +44,8 @@ public class MySQLPeriodicite implements PeriodiciteIDAO{
 			System.out.println("Pb select" + sqle.getMessage());
 
 		}
+	//	if (Periodicite.getLibelle() == null)
+		//	Periodicite = null;
 		return Periodicite;
 
 	}
@@ -57,10 +58,7 @@ public class MySQLPeriodicite implements PeriodiciteIDAO{
 			PreparedStatement requete = laConnexion.prepareStatement("SELECT id_Periodicite,libelle FROM Periodicite");
 			ResultSet res = requete.executeQuery();
 			while (res.next()) {
-				listePeriodicite.add(new Periodicite(
-						res.getInt("id_periodicite"),
-						res.getString("libelle")
-						));
+				listePeriodicite.add(new Periodicite(res.getInt("id_periodicite"), res.getString("libelle")));
 			}
 			if (requete != null)
 				requete.close();
@@ -68,17 +66,19 @@ public class MySQLPeriodicite implements PeriodiciteIDAO{
 				res.close();
 		} catch (SQLException sqle) {
 			System.out.println("Pb select" + sqle.getMessage());
+
 		}
-		
 		return listePeriodicite;
 	}
 
 	@Override
-	public boolean create(Periodicite per) {
+	public boolean create(Periodicite object) {
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement("INSERT INTO Periodicite(libelle) VALUES(?)",Statement.RETURN_GENERATED_KEYS);
-			requete.setString(1, per.getLibelle());
+			PreparedStatement requete = laConnexion.prepareStatement(
+					"INSERT INTO Periodicite(libelle) VALUES(?,?)",
+					Statement.RETURN_GENERATED_KEYS);
+			requete.setString(1, object.getLibelle());
 			requete.executeUpdate();
 			
 			if (requete != null)
@@ -92,13 +92,16 @@ public class MySQLPeriodicite implements PeriodiciteIDAO{
 	}
 
 	@Override
-	public boolean update(Periodicite per) {
+	public boolean update(Periodicite object) {
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement("UPDATE Periodicite SET libelle=? WHERE id_Periodicite=?");
-			requete.setString(1, per.getLibelle());
-			requete.setInt(2, per.getId());
+			PreparedStatement requete = laConnexion
+					.prepareStatement("UPDATE Periodicite SET libelle=? WHERE id_Periodicite=?");
+			requete.setString(1, object.getLibelle());
+			requete.setInt(2, object.getId());
 			requete.executeUpdate();
+			//System.out.println(Periodicite.getId());
+			System.out.println("Le Periodicite a �t� modifi�.");
 			if (requete != null)
 				requete.close();
 			return true;
@@ -109,11 +112,11 @@ public class MySQLPeriodicite implements PeriodiciteIDAO{
 	}
 
 	@Override
-	public boolean delete(Periodicite per) {
+	public boolean delete(Periodicite object) {
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			Statement requete = laConnexion.createStatement();
-			requete.executeUpdate("DELETE FROM Periodicite WHERE id_Periodicite=" + per.getId());
+			requete.executeUpdate("DELETE FROM Periodicite WHERE id_Periodicite=" + object.getId());
 			if (requete != null)
 				requete.close();
 			return true;
@@ -122,14 +125,5 @@ public class MySQLPeriodicite implements PeriodiciteIDAO{
 			System.out.println("Pb select" + sqle.getMessage());
 			return false;
 		}
-	}
-
-	
-	//---------------------------------- a faire plus tard -------------------------------------------------------------
-	
-	@Override
-	public ArrayList<Periodicite> getByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

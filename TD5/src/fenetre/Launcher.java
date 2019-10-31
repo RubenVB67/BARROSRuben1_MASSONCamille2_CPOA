@@ -12,7 +12,7 @@ public class Launcher extends Application{
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			URL fxmlURL = getClass().getResource("fenetreRevue.fxml");
+			URL fxmlURL = getClass().getResource("VueRevue.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);

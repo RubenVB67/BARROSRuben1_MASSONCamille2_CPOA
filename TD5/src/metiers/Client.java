@@ -4,11 +4,11 @@ public class Client {
 	private int id_client;
 	private String nom;
 	private String prenom;
-	private String no_rue;
+	private String no_rue; 
 	private String voie;
 	private String code_postal;
 	private String ville;
-	private String pays;
+	private String pays; 
 
 	public Client(int id_client, String nom, String prenom, String no_rue, String voie, String code_postal,
 			String ville, String pays) {
@@ -33,6 +33,17 @@ public class Client {
 		this.code_postal = null;
 		this.ville = null;
 		this.pays = null;
+	}
+	//constructeur pour l'interface
+	public Client(String nom, String prenom,String no_rue,String voie,String code_postal,String ville,String pays) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.no_rue = no_rue;
+		this.voie = voie;
+		this.code_postal = code_postal;
+		this.ville = ville;
+		this.pays = pays;
 	}
 	
 	public Client() {

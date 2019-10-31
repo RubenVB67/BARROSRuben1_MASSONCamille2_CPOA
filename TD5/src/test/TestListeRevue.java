@@ -1,16 +1,17 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
 
 import daofactory.DAOFactory;
 import daofactory.Persistance;
 import daoobjects.RevueIDAO;
 import metiers.Revue;
 
-class TestListeRevue {
-	
+public class TestListeRevue {
+
 	RevueIDAO revu = DAOFactory.getDAOFactory(Persistance.Liste).getRevueDAO();
 
 	@Test

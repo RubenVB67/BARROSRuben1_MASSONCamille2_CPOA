@@ -1,17 +1,19 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
 
 import daofactory.DAOFactory;
 import daofactory.Persistance;
 import daoobjects.ClientIDAO;
 import metiers.Client;
 
-class TestListeClient {
+public class TestListeClient {
 
-	ClientIDAO clien = DAOFactory.getDAOFactory(Persistance.Liste).getClientDAO();
+ClientIDAO clien = DAOFactory.getDAOFactory(Persistance.Liste).getClientDAO();
 	
 	@Test
 	void testCreate() {
