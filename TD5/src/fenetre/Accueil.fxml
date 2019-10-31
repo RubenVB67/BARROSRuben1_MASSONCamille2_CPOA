@@ -5,11 +5,10 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.Main">
    <children>
-      <RadioButton fx:id="rdb_mysql" layoutX="160.0" layoutY="106.0" mnemonicParsing="false" text="MySQL" />
-      <RadioButton fx:id="rdb_liste" layoutX="423.0" layoutY="106.0" mnemonicParsing="false" text="Liste" />
+      <RadioButton fx:id="rdb_mysql" layoutX="160.0" layoutY="106.0" mnemonicParsing="false" onAction="#modeSQL" text="MySQL" />
+      <RadioButton fx:id="rdb_liste" layoutX="423.0" layoutY="106.0" mnemonicParsing="false" onAction="#modeListe" text="Liste" />
       <Label layoutX="160.0" layoutY="38.0" text="Bienvenue dans notre application choissisez si vous voulez" />
       <Label layoutX="203.0" layoutY="67.0" text="travailler avec la base de données ou sans" />
       <Label layoutX="201.0" layoutY="139.0" text="Choissisez la table sur laquelle commencer" />
