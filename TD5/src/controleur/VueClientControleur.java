@@ -3,42 +3,42 @@ package controleur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableView;
-import metiers.Client;
 
 public class VueClientControleur {
 
     @FXML
-    private TableView<Client> tbl_client;
+    private TableView<?> tbl_client;
 
     @FXML
-    private Button btn_abonnement;
+    private Button btn_creer_client;
 
     @FXML
-    private Button btn_periodicite;
+    private Button btn_modifier_client;
 
     @FXML
-    private Button btn_revue;
+    private Button btn_supp_client;
 
     @FXML
-    private RadioButton rdb_sql;
+    private Button btn_return;
 
     @FXML
-    private RadioButton rdb_liste;
-
-    @FXML
-    void redirigerAbonnement(ActionEvent event) {
+    void client_Supp(ActionEvent event) {
 
     }
 
     @FXML
-    void redirigerPeriodicite(ActionEvent event) {
+    void creerClient(ActionEvent event) {
 
     }
 
     @FXML
-    void redirigerRevue(ActionEvent event) {
+    void modifierClient(ActionEvent event) {
+
+    }
+
+    @FXML
+    void retour_Accueil(ActionEvent event) {
 
     }
 

@@ -3,42 +3,51 @@ package controleur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableView;
-import metiers.Abonnement;
 
 public class VueAbonnementControleur {
 
     @FXML
-    private TableView<Abonnement> tbl_abonnement;
+    private TableView<?> tbl_abonnement;
 
     @FXML
-    private Button btn_client;
+    private Button btn_creer_abo;
 
     @FXML
-    private Button btn_periodicite;
+    private Button btn_modifier_abo;
 
     @FXML
-    private Button btn_revue;
+    private Button btn_supp_abo;
 
     @FXML
-    private RadioButton rdb_sql;
+    private Button btn_retour;
 
     @FXML
-    private RadioButton rdb_liste;
+    private CheckBox chk_encours;
 
     @FXML
-    void redirigerClient(ActionEvent event) {
+    void aboEnCours(ActionEvent event) {
 
     }
 
     @FXML
-    void redirigerPeriodicite(ActionEvent event) {
+    void creerAbo(ActionEvent event) {
 
     }
 
     @FXML
-    void redirigerRevue(ActionEvent event) {
+    void modifierAbo(ActionEvent event) {
+
+    }
+
+    @FXML
+    void retourAccueil(ActionEvent event) {
+
+    }
+
+    @FXML
+    void suppAbo(ActionEvent event) {
 
     }
 

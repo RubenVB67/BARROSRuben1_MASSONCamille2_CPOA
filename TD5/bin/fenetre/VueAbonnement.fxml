@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.VueAbonnementControleur">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.VueAbonnementControleur">
    <children>
       <Pane layoutY="60.0" prefHeight="340.0" prefWidth="600.0">
          <children>
-            <TableView prefHeight="340.0" prefWidth="600.0">
+            <TableView fx:id="tbl_abonnement" prefHeight="340.0" prefWidth="600.0">
               <columns>
                 <TableColumn prefWidth="150.0" text="Id client" />
                 <TableColumn prefWidth="150.0" text="Id revue" />
                   <TableColumn prefWidth="150.0" text="Date debut" />
-                  <TableColumn fx:id="tbl_abonnement" prefWidth="150.0" text="Date fin" />
+                  <TableColumn prefWidth="150.0" text="Date fin" />
               </columns>
             </TableView>
          </children>
       </Pane>
       <Pane prefHeight="60.0" prefWidth="600.0">
          <children>
-            <Button fx:id="btn_client" layoutX="187.0" layoutY="17.0" mnemonicParsing="false" onAction="#redirigerClient" text="Client" />
-            <Button fx:id="btn_periodicite" layoutX="252.0" layoutY="17.0" mnemonicParsing="false" onAction="#redirigerPeriodicite" text="Periodicite" />
-            <Button fx:id="btn_revue" layoutX="341.0" layoutY="17.0" mnemonicParsing="false" onAction="#redirigerRevue" text="Revue" />
-            <RadioButton fx:id="rdb_sql" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" text="MySQL" />
-            <RadioButton fx:id="rdb_liste" layoutX="80.0" layoutY="21.0" mnemonicParsing="false" text="Liste" />
+            <Button fx:id="btn_creer_abo" layoutX="50.0" layoutY="17.0" mnemonicParsing="false" onAction="#creerAbo" text="Creer" />
+            <Button fx:id="btn_modifier_abo" layoutX="149.0" layoutY="18.0" mnemonicParsing="false" onAction="#modifierAbo" text="Modifier" />
+            <Button fx:id="btn_supp_abo" layoutX="264.0" layoutY="17.0" mnemonicParsing="false" onAction="#suppAbo" text="Supprimer" />
+            <Button fx:id="btn_retour" layoutX="387.0" layoutY="17.0" mnemonicParsing="false" onAction="#retourAccueil" text="Retour" />
+            <CheckBox fx:id="chk_encours" layoutX="485.0" layoutY="22.0" mnemonicParsing="false" onAction="#aboEnCours" text="En cours" />
          </children>
       </Pane>
    </children>

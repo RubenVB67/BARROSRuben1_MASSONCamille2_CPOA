@@ -9,16 +9,10 @@ import javafx.scene.control.TextField;
 public class DetailClientControleur {
 
     @FXML
-    private Button btn_modifier;
-
-    @FXML
     private Button btn_retour;
 
     @FXML
     private Button btn_valider;
-
-    @FXML
-    private TextField txt_idclient;
 
     @FXML
     private TextField txt_prenom;
@@ -42,9 +36,6 @@ public class DetailClientControleur {
     private TextField txt_pays;
 
     @FXML
-    private Label lbl_erreuridclient;
-
-    @FXML
     private Label lbl_erreurnom;
 
     @FXML
@@ -64,11 +55,6 @@ public class DetailClientControleur {
 
     @FXML
     private Label lbl_erreurpays;
-
-    @FXML
-    void modifier(ActionEvent event) {
-
-    }
 
     @FXML
     void retour(ActionEvent event) {

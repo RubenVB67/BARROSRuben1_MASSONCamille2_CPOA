@@ -14,9 +14,6 @@ public class DetailAbonnementControleur {
     private Pane pnl_detailabo;
 
     @FXML
-    private Button btn_modifier;
-
-    @FXML
     private Button btn_retour;
 
     @FXML
@@ -45,11 +42,6 @@ public class DetailAbonnementControleur {
 
     @FXML
     private DatePicker dtp_datefin;
-
-    @FXML
-    void modifier(ActionEvent event) {
-
-    }
 
     @FXML
     void retour(ActionEvent event) {
