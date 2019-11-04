@@ -90,6 +90,11 @@ public class DetailAbonnementControleur {
 			
 			stage1.setScene(scene);
 			stage1.setTitle("Tous les Abonnements");
+			if (VueClientControleur.memoirebis != null)
+				stage1.setTitle("Liste des Abonnements de "+
+						VueClientControleur.memoirebis.getPrenom()+
+						" "+
+						VueClientControleur.memoirebis.getNom());
 			stage1.show();
    		} catch (Exception e) {
    			Alert alert=new Alert(Alert.AlertType.ERROR);

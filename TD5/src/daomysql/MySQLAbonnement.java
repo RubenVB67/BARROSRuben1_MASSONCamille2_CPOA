@@ -169,14 +169,41 @@ public class MySQLAbonnement implements AbonnementIDAO{
 		return listeAbonnement;
 	}
 	
-//---------------------------------- a faire plus tard -------------------------------------------------------------
-	
-
 	@Override
 	public ArrayList<Abonnement> getByClient(int id_client) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Abonnement> listeAbonnement = new ArrayList<>();
+		try {
+			Connection laConnexion = Connexion.getInstance().getMaConnexion();
+			PreparedStatement requete = laConnexion.prepareStatement(
+					"SELECT * "
+					+ "FROM `Abonnement` "
+					+ "WHERE id_client=?");
+			requete.setInt(1,id_client);
+			ResultSet res = requete.executeQuery();
+			while (res.next()) {
+				listeAbonnement.add(new Abonnement(
+						res.getInt("id_client"),
+						res.getInt("id_revue"),
+						res.getDate("date_debut").toLocalDate(),
+						res.getDate("date_fin").toLocalDate()
+						));
+			}
+			if (requete != null)
+				requete.close();
+			if (res != null)
+				res.close();
+		} catch (SQLException sqle) {
+			System.out.println("Pb select" + sqle.getMessage());
+
+		}
+		return listeAbonnement;
 	}
+	
+	
+	
+	
+//---------------------------------- a faire plus tard -------------------------------------------------------------
+	
 
 	@Override
 	public ArrayList<Abonnement> getByRevue(int id_revue) {

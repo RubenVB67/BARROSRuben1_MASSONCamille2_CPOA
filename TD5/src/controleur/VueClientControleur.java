@@ -20,6 +20,8 @@ import metiers.Client;
 public class VueClientControleur {
 	
 	public static Client memoire;
+	
+	public static Client memoirebis;
 
     @FXML
     private TableView<Client> tbl_client;
@@ -60,9 +62,49 @@ public class VueClientControleur {
     @FXML
     private Button btn_return;
     
+    @FXML
+    private Button btn_abo;
+
+    @FXML
+    void affiche_Abo(ActionEvent event) {
+    	if(tbl_client.getSelectionModel().getSelectedItem() != null) {
+	    	this.memoirebis = tbl_client.getSelectionModel().getSelectedItem();
+	    	
+	    	try {
+				Stage stage =(Stage) btn_abo.getScene().getWindow();
+				stage.close(); 
+				
+				Stage stage1 = new Stage();
+				
+				URL fxmlURL = getClass().getResource("../fenetre/VueAbonnement.fxml");
+				FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+				Parent root = fxmlLoader.load();
+				Scene scene = new Scene(root);
+				
+				stage1.setScene(scene);
+				stage1.setTitle("Liste des Abonnements de "+memoirebis.getPrenom()+" "+memoirebis.getNom());
+				stage1.show();
+	  		} catch (Exception e) {
+	  			Alert alert=new Alert(Alert.AlertType.ERROR);
+	            alert.initOwner(btn_supp_client.getScene().getWindow());
+	            alert.setTitle("ERREUR");
+	            alert.setHeaderText("erreur survenue :");
+	            alert.setContentText(e.toString());
+	            alert.showAndWait();
+	  		}
+    	} else {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(btn_supp_client.getScene().getWindow());
+            alert.setTitle("ERREUR");
+            alert.setHeaderText("Aucun Client selectionne");
+            alert.showAndWait();
+		}
+    }
     
 	@FXML
     public void initialize() {
+		memoirebis = null;
+		
     	col_id_client.setCellValueFactory(new PropertyValueFactory<>("id_client"));
     	col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
     	col_prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));

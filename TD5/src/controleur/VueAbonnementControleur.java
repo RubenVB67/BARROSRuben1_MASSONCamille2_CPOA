@@ -55,6 +55,11 @@ public class VueAbonnementControleur {
     
     @FXML
     public void initialize() {
+    	if (VueClientControleur.memoirebis != null) {
+    		btn_creer_abo.setVisible(false);
+    		chk_encours.setVisible(false);
+		}
+    	
     	col_id_client.setCellValueFactory(new PropertyValueFactory<>("id_client"));
     	col_id_revue.setCellValueFactory(new PropertyValueFactory<>("id_revue"));
     	col_d_deb.setCellValueFactory(new PropertyValueFactory<>("date_debut"));
@@ -135,18 +140,26 @@ public class VueAbonnementControleur {
     @FXML
     void retourAccueil(ActionEvent event) {
     	try {
+    		boolean client = false;
+    		
     		Stage stage =(Stage) btn_retour.getScene().getWindow();
 			stage.close(); 
 			
 			Stage stage1 = new Stage();
 			
 			URL fxmlURL = getClass().getResource("../fenetre/Accueil.fxml");
+			if (VueClientControleur.memoirebis != null) {
+				fxmlURL = getClass().getResource("../fenetre/VueClient.fxml");
+				client = true;
+			}
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			
 			stage1.setScene(scene);
 			stage1.setTitle("Accueil");
+			if (client)
+				stage1.setTitle("Tous les Clients");
 			stage1.show();
   		} catch (Exception e) {
   			e.printStackTrace();
@@ -176,6 +189,8 @@ public class VueAbonnementControleur {
     	ObservableList<Abonnement> list = FXCollections.observableArrayList();
     	if (chk_encours.isSelected())
     		list.addAll(AccueilControleur.dao.getAbonnementDAO().enCours());
+    	else if (VueClientControleur.memoirebis != null)
+    		list.addAll(AccueilControleur.dao.getAbonnementDAO().getByClient(VueClientControleur.memoirebis.getId()));
     	else
         	list.addAll(AccueilControleur.dao.getAbonnementDAO().findAll());
 

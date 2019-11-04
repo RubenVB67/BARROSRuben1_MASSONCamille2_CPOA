@@ -119,16 +119,23 @@ public class ListeAbonnement implements AbonnementIDAO{
 		return List;
 	}
 
+	@Override
+	public ArrayList<Abonnement> getByClient(int id_client) {
+		ArrayList<Abonnement> List = new ArrayList<Abonnement>();
+		for (Abonnement abonnement : ListeAbo) {
+			if (abonnement.getId_client() == id_client) 
+				List.add(abonnement);
+		}
+		return List;
+	}
+	
+	
+	
 	
 	
 //---------------------------------- a faire plus tard -------------------------------------------------------------
 
 
-	@Override
-	public ArrayList<Abonnement> getByClient(int id_client) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ArrayList<Abonnement> getByRevue(int id_revue) {

@@ -27,9 +27,10 @@
       <Pane prefHeight="59.0" prefWidth="600.0">
          <children>
             <Button fx:id="btn_creer_client" layoutX="29.0" layoutY="17.0" mnemonicParsing="false" onAction="#creerClient" text="Creer" />
-            <Button fx:id="btn_modifier_client" layoutX="141.0" layoutY="17.0" mnemonicParsing="false" onAction="#modifierClient" text="Modifier" />
-            <Button fx:id="btn_supp_client" layoutX="268.0" layoutY="17.0" mnemonicParsing="false" onAction="#client_Supp" text="Supprimer" />
-            <Button fx:id="btn_return" layoutX="457.0" layoutY="17.0" mnemonicParsing="false" onAction="#retour_Accueil" text="Retour" />
+            <Button fx:id="btn_modifier_client" layoutX="109.0" layoutY="17.0" mnemonicParsing="false" onAction="#modifierClient" text="Modifier" />
+            <Button fx:id="btn_supp_client" layoutX="201.0" layoutY="17.0" mnemonicParsing="false" onAction="#client_Supp" text="Supprimer" />
+            <Button fx:id="btn_return" layoutX="497.0" layoutY="17.0" mnemonicParsing="false" onAction="#retour_Accueil" text="Retour" />
+            <Button fx:id="btn_abo" layoutX="300.0" layoutY="17.0" mnemonicParsing="false" onAction="#affiche_Abo" text="Abonnement" />
          </children>
       </Pane>
    </children>
