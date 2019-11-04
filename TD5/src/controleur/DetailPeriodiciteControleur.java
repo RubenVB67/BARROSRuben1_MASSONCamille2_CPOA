@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class DetailPeriodiciteControleur {
 
@@ -15,39 +16,23 @@ public class DetailPeriodiciteControleur {
     private Label lbl_libelle;
 
     @FXML
-    private Label lbl_idperiodicite;
+    private TextField txt_idperiodicite;
 
     @FXML
     private Button btn_valider;
 
     @FXML
-    private TextField txt_idperiodicite;
-
-    @FXML
-    private TextField txt_libelle;
-
-    @FXML
-    private Button btn_modifier;
-
-    @FXML
-    private Label lbl_erreuridperiodicite;
-
-    @FXML
     private Label lbl_erreurlibelle;
 
     @FXML
-    void modifier(ActionEvent event) {
-
-    }
-
-    @FXML
     void retour(ActionEvent event) {
-
+    	Stage stage = (Stage) btn_retour.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     void valider(ActionEvent event) {
-
+    	
     }
 
 }
