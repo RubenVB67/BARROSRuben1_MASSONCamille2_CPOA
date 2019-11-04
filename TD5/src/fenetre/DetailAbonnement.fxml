@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
@@ -17,14 +17,14 @@
             <Label layoutX="41.0" layoutY="144.0" text="Date debut :" />
             <Label layoutX="43.0" layoutY="192.0" text="Date fin :" />
             <Label layoutX="42.0" layoutY="47.0" text="Id_client :" />
-            <TextField fx:id="txt_idclient" layoutX="138.0" layoutY="43.0" />
-            <TextField fx:id="txt_idrevue" layoutX="138.0" layoutY="95.0" />
             <Label fx:id="lbl_erreuridclient" layoutX="358.0" layoutY="47.0" text="Il manque un id client" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreuridrevue" layoutX="358.0" layoutY="98.0" text="Il manque un id revue" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurdatedebut" layoutX="358.0" layoutY="144.0" text="Il manque une date de debut" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurdatefin" layoutX="358.0" layoutY="192.0" text="Il manque une date de fin" textFill="RED" visible="false" />
             <DatePicker fx:id="dtp_datedebut" layoutX="138.0" layoutY="140.0" prefHeight="25.0" prefWidth="149.0" />
             <DatePicker fx:id="dtp_datefin" layoutX="138.0" layoutY="188.0" prefHeight="25.0" prefWidth="149.0" />
+            <ComboBox fx:id="cbb_id_client" layoutX="138.0" layoutY="43.0" prefWidth="150.0" />
+            <ComboBox fx:id="cbb_id_revue" layoutX="138.0" layoutY="86.0" prefWidth="150.0" />
          </children>
       </Pane>
    </children>

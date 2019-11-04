@@ -139,6 +139,35 @@ public class MySQLAbonnement implements AbonnementIDAO{
 		return Abonnement;
 	}
 
+	@Override
+	public ArrayList<Abonnement> enCours() {
+		ArrayList<Abonnement> listeAbonnement = new ArrayList<>();
+		try {
+			Connection laConnexion = Connexion.getInstance().getMaConnexion();
+			PreparedStatement requete = laConnexion.prepareStatement(
+					"SELECT * "
+					+ "FROM `Abonnement` "
+					+ "WHERE `date_debut` <= CURRENT_DATE "
+					+ "AND `date_fin` >= CURRENT_DATE");
+			ResultSet res = requete.executeQuery();
+			while (res.next()) {
+				listeAbonnement.add(new Abonnement(
+						res.getInt("id_client"),
+						res.getInt("id_revue"),
+						res.getDate("date_debut").toLocalDate(),
+						res.getDate("date_fin").toLocalDate()
+						));
+			}
+			if (requete != null)
+				requete.close();
+			if (res != null)
+				res.close();
+		} catch (SQLException sqle) {
+			System.out.println("Pb select" + sqle.getMessage());
+
+		}
+		return listeAbonnement;
+	}
 	
 //---------------------------------- a faire plus tard -------------------------------------------------------------
 	
@@ -166,4 +195,5 @@ public class MySQLAbonnement implements AbonnementIDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

@@ -1,16 +1,16 @@
 package metiers;
 
 public class Client {
-	private int id_client;
+	private Integer id_client;
 	private String nom;
 	private String prenom;
-	private String no_rue; 
+	private String no_rue;
 	private String voie;
 	private String code_postal;
 	private String ville;
-	private String pays; 
+	private String pays;
 
-	public Client(int id_client, String nom, String prenom, String no_rue, String voie, String code_postal,
+	public Client(Integer id_client, String nom, String prenom, String no_rue, String voie, String code_postal,
 			String ville, String pays) {
 		super();
 		this.id_client = id_client;
@@ -23,7 +23,7 @@ public class Client {
 		this.pays = pays;
 	}
 	
-	public Client(String nom, String prenom,int id_client) {
+	public Client(String nom, String prenom, Integer id_client) {
 		super();
 		this.id_client = id_client;
 		this.nom = nom;
@@ -50,10 +50,10 @@ public class Client {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id_client;
 	}
-	public void setId(int id_client) {
+	public void setId(Integer id_client) {
 		this.id_client = id_client;
 	}
 	public String getNom() {

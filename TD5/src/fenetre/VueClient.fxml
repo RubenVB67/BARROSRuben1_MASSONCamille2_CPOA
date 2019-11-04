@@ -12,14 +12,14 @@
          <children>
             <TableView fx:id="tbl_client" prefHeight="340.0" prefWidth="600.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Id client" />
-                <TableColumn prefWidth="75.0" text="Nom" />
-                  <TableColumn prefWidth="75.0" text="Prenom" />
-                  <TableColumn prefWidth="75.0" text="N° Rue" />
-                  <TableColumn prefWidth="75.0" text="Voie" />
-                  <TableColumn prefWidth="75.0" text="Code Postal" />
-                  <TableColumn prefWidth="75.0" text="Ville" />
-                  <TableColumn prefWidth="75.0" text="Pays" />
+                <TableColumn fx:id="col_id_client" editable="false" prefWidth="75.0" text="Id client" />
+                <TableColumn fx:id="col_nom" editable="false" prefWidth="75.0" text="Nom" />
+                  <TableColumn fx:id="col_prenom" editable="false" prefWidth="75.0" text="Prenom" />
+                  <TableColumn fx:id="col_rue" editable="false" prefWidth="75.0" text="N° Rue" />
+                  <TableColumn fx:id="col_voie" editable="false" prefWidth="75.0" text="Voie" />
+                  <TableColumn fx:id="col_cp" editable="false" prefWidth="75.0" text="Code Postal" />
+                  <TableColumn fx:id="col_ville" editable="false" prefWidth="75.0" text="Ville" />
+                  <TableColumn fx:id="col_pays" editable="false" prefWidth="75.0" text="Pays" />
               </columns>
             </TableView>
          </children>

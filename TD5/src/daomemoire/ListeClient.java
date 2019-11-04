@@ -23,8 +23,8 @@ public class ListeClient implements ClientIDAO{
 	private ListeClient() {
 
 		this.ListeClient = new ArrayList<Client>();
-		this.ListeClient.add(new Client("MASSON", "Camille", 0));
-		this.ListeClient.add(new Client("BARROS", "Ruben", 1));
+		this.ListeClient.add(new Client(1, "nom1", "prenom1", "11", "voie1",  "11000", "ville1", "pays1"));
+		this.ListeClient.add(new Client(2, "nom2", "prenom2", "22", "voie2",  "22000", "ville2", "pays2"));
 	}
 
 	@Override
@@ -34,14 +34,14 @@ public class ListeClient implements ClientIDAO{
 
 	@Override
 	public boolean create(Client cli) {
-		cli.setId(1);
+		cli.setId((Integer) 1);
 		
 		ArrayList<Integer> lic = new ArrayList<Integer>();
 		for(Client c : this.ListeClient) lic.add(c.getId());
 		
 		while (lic.contains(cli.getId())) {
 
-			cli.setId(cli.getId() + 1);
+			cli.setId( cli.getId() + 1 );
 		}
 		boolean ok = this.ListeClient.add(cli);
 		
@@ -50,7 +50,11 @@ public class ListeClient implements ClientIDAO{
 
 	@Override
 	public boolean update(Client cli) {
-		int idx = this.ListeClient.indexOf(cli);
+		int idx = -1;
+		for (Client client : ListeClient) {
+			if(client.getId() == cli.getId()) 
+				idx = this.ListeClient.indexOf(client);
+		}
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
 		} else {

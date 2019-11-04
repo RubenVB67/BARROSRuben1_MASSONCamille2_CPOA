@@ -13,10 +13,10 @@
          <children>
             <TableView fx:id="tbl_abonnement" prefHeight="340.0" prefWidth="600.0">
               <columns>
-                <TableColumn prefWidth="150.0" text="Id client" />
-                <TableColumn prefWidth="150.0" text="Id revue" />
-                  <TableColumn prefWidth="150.0" text="Date debut" />
-                  <TableColumn prefWidth="150.0" text="Date fin" />
+                <TableColumn fx:id="col_id_client" editable="false" prefWidth="150.0" text="Id client" />
+                <TableColumn fx:id="col_id_revue" editable="false" prefWidth="150.0" text="Id revue" />
+                  <TableColumn fx:id="col_d_deb" editable="false" prefWidth="150.0" text="Date debut" />
+                  <TableColumn fx:id="col_d_fin" editable="false" prefWidth="150.0" text="Date fin" />
               </columns>
             </TableView>
          </children>

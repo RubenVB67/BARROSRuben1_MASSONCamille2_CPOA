@@ -21,6 +21,7 @@ public interface AbonnementIDAO extends IDAO<Abonnement>{
 	public abstract ArrayList <Abonnement>getByRevue(int id_revue);
 	public abstract ArrayList <Abonnement>getByDebut(String date_debut);
 	public abstract ArrayList <Abonnement>getByFin(String date_fin);
+	public abstract ArrayList <Abonnement>enCours();
 	
 	public abstract Abonnement getById(int idabo, int idrev);
 }

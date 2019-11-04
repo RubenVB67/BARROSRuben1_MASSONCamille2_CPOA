@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -68,10 +69,15 @@ public class AccueilControleur {
 				Scene scene = new Scene(root);
 				
 				stage1.setScene(scene);
-				stage1.setTitle("lol");
+				stage1.setTitle("Tous les Abonnements");
 				stage1.show();
     		} catch (Exception e) {
-    			e.printStackTrace();
+    			Alert alert=new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(btn_abo.getScene().getWindow());
+                alert.setTitle("ERREUR");
+                alert.setHeaderText("erreur survenue :");
+                alert.setContentText(e.toString());
+                alert.showAndWait();
     		}
     	}
     }
@@ -80,18 +86,26 @@ public class AccueilControleur {
     void redirigerClient(ActionEvent event) {
     	if(rdb_mysql.isSelected() || rdb_liste.isSelected()) {
     		try {
-				 Stage stage1 = new Stage();
+				Stage stage =(Stage) btn_client.getScene().getWindow();
+				stage.close(); 
 				
-				 URL fxmlURL = getClass().getResource("../fenetre/Vueclient.fxml");
-				 FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
-				 Parent root = fxmlLoader.load();
-				 Scene scene = new Scene(root);
+				Stage stage1 = new Stage();
 				
-				 stage1.setScene(scene);
-				 stage1.setTitle("lol");
-				 stage1.show();
+				URL fxmlURL = getClass().getResource("../fenetre/Vueclient.fxml");
+				FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+				Parent root = fxmlLoader.load();
+				Scene scene = new Scene(root);
+				
+				stage1.setScene(scene);
+				stage1.setTitle("Tous les Clients");
+				stage1.show();
 	   		} catch (Exception e) {
-	   			e.printStackTrace();
+	   			Alert alert=new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(btn_client.getScene().getWindow());
+                alert.setTitle("ERREUR");
+                alert.setHeaderText("erreur survenue :");
+                alert.setContentText(e.toString());
+                alert.showAndWait();
 	   		}
     	}
     }
@@ -100,18 +114,26 @@ public class AccueilControleur {
     void redirigerPeriodicite(ActionEvent event) {
     	if(rdb_mysql.isSelected() || rdb_liste.isSelected()) {
     		try {
-				 Stage stage1 = new Stage();
+				Stage stage =(Stage) btn_periodicite.getScene().getWindow();
+				stage.close(); 
 				
-				 URL fxmlURL = getClass().getResource("../fenetre/VuePeriodicite.fxml");
-				 FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
-				 Parent root = fxmlLoader.load();
-				 Scene scene = new Scene(root);
+				Stage stage1 = new Stage();
 				
-				 stage1.setScene(scene);
-				 stage1.setTitle("lol");
-				 stage1.show();
+				URL fxmlURL = getClass().getResource("../fenetre/VuePeriodicite.fxml");
+				FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+				Parent root = fxmlLoader.load();
+				Scene scene = new Scene(root);
+				
+				stage1.setScene(scene);
+				stage1.setTitle("Toutes les Periodicites");
+				stage1.show();
 	   		} catch (Exception e) {
-	   			e.printStackTrace();
+	   			Alert alert=new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(btn_periodicite.getScene().getWindow());
+                alert.setTitle("ERREUR");
+                alert.setHeaderText("erreur survenue :");
+                alert.setContentText(e.toString());
+                alert.showAndWait();
 	   		}
     	}
     }
@@ -120,18 +142,26 @@ public class AccueilControleur {
     void redirigerRevue(ActionEvent event) {
     	if(rdb_mysql.isSelected() || rdb_liste.isSelected()) {
     		try {
-				 Stage stage1 = new Stage();
+				Stage stage =(Stage) btn_revue.getScene().getWindow();
+				stage.close(); 
 				
-				 URL fxmlURL = getClass().getResource("../fenetre/VueRevue.fxml");
-				 FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
-				 Parent root = fxmlLoader.load();
-				 Scene scene = new Scene(root);
+				Stage stage1 = new Stage();
 				
-				 stage1.setScene(scene);
-				 stage1.setTitle("lol");
-				 stage1.show();
+				URL fxmlURL = getClass().getResource("../fenetre/VueRevue.fxml");
+				FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+				Parent root = fxmlLoader.load();
+				Scene scene = new Scene(root);
+				
+				stage1.setScene(scene);
+				stage1.setTitle("Toutes les Revues");
+				stage1.show();
 	   		} catch (Exception e) {
-	   			e.printStackTrace();
+	   			Alert alert=new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(btn_revue.getScene().getWindow());
+                alert.setTitle("ERREUR");
+                alert.setHeaderText("erreur survenue :");
+                alert.setContentText(e.toString());
+                alert.showAndWait();
 	   		}
     	}
     }

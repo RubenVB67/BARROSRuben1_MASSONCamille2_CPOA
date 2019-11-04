@@ -1,14 +1,10 @@
 package test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import daofactory.DAOFactory;
 import daofactory.Persistance;
-import daomysql.MySQLClient;
 import daoobjects.ClientIDAO;
 import junit.framework.TestCase;
 import metiers.Client;

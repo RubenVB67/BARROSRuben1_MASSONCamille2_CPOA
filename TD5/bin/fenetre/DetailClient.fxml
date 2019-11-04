@@ -56,7 +56,7 @@
                </padding>
             </TextField>
             <Label fx:id="lbl_erreurnom" layoutX="399.0" layoutY="43.0" text="Il manque un nom" textFill="RED" visible="false" />
-            <Label fx:id="lbl_erreurprenom" layoutX="399.0" layoutY="79.0" text="Il manque un prenom" visible="false" />
+            <Label fx:id="lbl_erreurprenom" layoutX="399.0" layoutY="79.0" text="Il manque un prenom" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurnumeroderue" layoutX="399.0" layoutY="114.0" text="Il manque un numero de rue" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurvoie" layoutX="399.0" layoutY="157.0" text="Il manque un nom de voie" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurcodepostal" layoutX="399.0" layoutY="192.0" text="Il manque un code postal" textFill="RED" visible="false" />
