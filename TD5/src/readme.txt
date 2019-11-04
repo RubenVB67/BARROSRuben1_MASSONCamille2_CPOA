@@ -5,4 +5,7 @@ La répartition dans le projet est plus ou moins égale à 50% pour chaque membr
 
 Ce qui manque pour l'instant :
 L'affichage mysql
-Les méthodes créer, supprimer et modifier.
+
+Méthode modifier pour la revue 
+Les méthodes pour periodicite
+Présente mais ne marche pas
