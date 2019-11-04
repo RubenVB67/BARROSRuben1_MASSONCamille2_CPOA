@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import daoobjects.AbonnementIDAO;
 import metiers.Abonnement;
+import metiers.Client;
 import metiers.Revue;
 
 public class ListeAbonnement implements AbonnementIDAO{
@@ -52,7 +53,12 @@ public class ListeAbonnement implements AbonnementIDAO{
 
 	@Override
 	public boolean update(Abonnement abo) {
-		int idx = this.ListeAbo.indexOf(abo);
+		int idx = -1;
+		for (Abonnement abon : ListeAbo) {
+			if(abon.getId_client() == abo.getId_client()
+					&& abon.getId_revue() == abo.getId_revue())
+				idx = this.ListeAbo.indexOf(abon);
+		}
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
 		} else {

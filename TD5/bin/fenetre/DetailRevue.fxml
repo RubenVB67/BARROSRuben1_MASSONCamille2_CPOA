@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,16 +15,19 @@
             <Label fx:id="lbl_visuel" layoutX="73.0" layoutY="192.0" text="Visuel :" />
             <Label fx:id="lbl_description" layoutX="51.0" layoutY="152.0" text="Description :" />
             <Label fx:id="lbl_titre" layoutX="84.0" layoutY="107.0" text="Titre :" />
-            <TextField fx:id="txt_tarif" disable="true" layoutX="151.0" layoutY="233.0" />
-            <TextField fx:id="txt_visuel" disable="true" layoutX="151.0" layoutY="188.0" />
-            <TextField fx:id="txt_description" disable="true" layoutX="151.0" layoutY="148.0" />
-            <TextField fx:id="txt_titre" disable="true" layoutX="151.0" layoutY="103.0" />
+            <TextField fx:id="txt_tarif" layoutX="151.0" layoutY="233.0" />
+            <TextField fx:id="txt_visuel" layoutX="151.0" layoutY="188.0" />
+            <TextField fx:id="txt_description" layoutX="151.0" layoutY="148.0" />
+            <TextField fx:id="txt_titre" layoutX="151.0" layoutY="103.0" />
             <Button fx:id="btn_retour" layoutX="420.0" layoutY="319.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
             <Button fx:id="btn_valider" layoutX="143.0" layoutY="319.0" mnemonicParsing="false" onAction="#valider" text="Valider" />
             <Label fx:id="lbl_erreurtitre" layoutX="343.0" layoutY="107.0" text="Il manque un titre" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurdescription" layoutX="343.0" layoutY="152.0" text="Il manque une description" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurvisuel" layoutX="343.0" layoutY="192.0" text="Il manque un nom de visuel" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurtarif" layoutX="343.0" layoutY="237.0" text="Il manque un tarif" textFill="RED" visible="false" />
+            <Label fx:id="lbl_perio" layoutX="46.0" layoutY="272.0" text="Periodicité :" />
+            <ComboBox fx:id="cbb_perio" layoutX="150.0" layoutY="268.0" prefHeight="9.0" prefWidth="150.0" />
+            <Label fx:id="lbl_erreurperio" layoutX="343.0" layoutY="272.0" text="Il manque un choix de periodicite" textFill="RED" visible="false" />
          </children>
       </Pane>
    </children>
