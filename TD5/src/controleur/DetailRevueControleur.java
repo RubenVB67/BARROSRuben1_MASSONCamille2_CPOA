@@ -1,5 +1,6 @@
 package controleur;
 
+import java.net.URL;
 import java.util.regex.Pattern;
 
 import daofactory.DAOFactory;
@@ -9,13 +10,19 @@ import daoobjects.RevueIDAO;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import metiers.Client;
 import metiers.Periodicite;
+import metiers.Revue;
 
 public class DetailRevueControleur {
 
@@ -71,112 +78,115 @@ public class DetailRevueControleur {
     private DAOFactory daof;
     private RevueIDAO rev;
     private PeriodiciteIDAO perio;
+    
+    @FXML
+    public void initialize() {
+    	
+    	if(VueRevueControleur.mem != null) {
+    		txt_titre.setText(VueRevueControleur.mem.getTitre());
+    		txt_description.setText(VueRevueControleur.mem.getDescription());
+    		txt_visuel.setText(VueRevueControleur.mem.getVisuel());
+    		this.cbb_perio.setItems(FXCollections.observableArrayList(perio.findAll()));
+    	}
+    }
+    
     @FXML
     void retour(ActionEvent event) {
-    	Stage stage = (Stage) btn_retour.getScene().getWindow();
-        stage.close();
+    	try {
+			Stage stage =(Stage) btn_retour.getScene().getWindow();
+			stage.close(); 
+			
+			Stage stage1 = new Stage();
+			
+			URL fxmlURL = getClass().getResource("../fenetre/VueRevue.fxml");
+			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+			Parent root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+			
+			stage1.setScene(scene);
+			stage1.setTitle("Toutes les revues");
+			stage1.show();
+   		} catch (Exception e) {
+   			Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(btn_retour.getScene().getWindow());
+            alert.setTitle("ERREUR");
+            alert.setHeaderText("erreur survenue :");
+            alert.setContentText(e.toString());
+            alert.showAndWait();
+   		}
     }
 
     @FXML
     void valider(ActionEvent valider) {
-    	VueRevueControleur vrc = new VueRevueControleur();
-    	if(vrc.creer == true) {
-    		this.daof = DAOFactory.getDAOFactory(Persistance.Liste);
-    		perio = this.daof.getPeriodiciteDAO();
-        	this.cbb_perio.setItems(FXCollections.observableArrayList(perio.findAll()));
-        	txt_titre.setDisable(true);
-        	txt_description.setDisable(false);
-        	txt_tarif.setDisable(false);
-        	txt_tarif.setDisable(false);
-        	cbb_perio.setDisable(false);
+    	boolean error = false;
+    	
+    	if (txt_titre.getText().trim().equals("")) {
+    		error = true;
+    		lbl_erreurtitre.setVisible(true);
+    	}else {
+    		lbl_erreurtitre.setVisible(false);
     	}
-    	else {
-    		this.daof = DAOFactory.getDAOFactory(Persistance.Liste);
-    		perio = this.daof.getPeriodiciteDAO();
-        	this.cbb_perio.setItems(FXCollections.observableArrayList(perio.findAll()));
+    	
+    	if(txt_description.getText().trim().equals("")){
+    		error = true;
+    		lbl_erreurdescription.setVisible(true);
+    	}else {
+    		lbl_erreurdescription.setVisible(false);
     	}
-    }
-    boolean texteSeulement(String texte) {
-    	texte = texte.replace("é", "e");
-		texte = texte.replace("ô", "o");
-		texte = texte.replace("ï", "i");
-		texte = texte.replace("'", "");
-		texte = texte.replace(",", "");
-		if (!texte.matches("[a-zA-z\\s]*"))
-			return false;
-		else
-			return true;
-    }
-    
-    boolean chiffreSeulement(String chiffre) {
-		if (!chiffre.matches("^[1-9]\\d*$"))
-			return false;
-		else
-			return true;
-    }
-    
-	boolean champCorrect() {
-		//REGEX pour trouver si c'est un double
-		boolean reponse = true;
-		if (!texteSeulement(this.txt_titre.getText())) {
-			this.lbl_erreurtitre.setVisible(true);
-			reponse = false;
-		} else
-			this.lbl_erreurtitre.setVisible(false);
-
-		if (!texteSeulement(this.txt_description.getText())) {
-			this.lbl_erreurdescription.setVisible(true);
-			reponse = false;
-		} else
-			this.lbl_erreurdescription.setVisible(false);
-			
-		if (!texteSeulement(this.txt_visuel.getText())) {
-			this.lbl_erreurvisuel.setVisible(true);
-			reponse = false;
-		} else
-			this.lbl_erreurvisuel.setVisible(false);
-		
-		//Check Double
-				final String Digits     = "(\\p{Digit}+)";
-				final String HexDigits  = "(\\p{XDigit}+)";
-				// an exponent is 'e' or 'E' followed by an optionally 
-				// signed decimal integer.
-				final String Exp        = "[eE][+-]?"+Digits;
-				final String fpRegex    =
-				    ("[\\x00-\\x20]*"+ // Optional leading "whitespace"
-				    "[+-]?(" +         // Optional sign character
-				    "NaN|" +           // "NaN" string
-				    "Infinity|" +      // "Infinity" string
-				    // Digits ._opt Digits_opt ExponentPart_opt FloatTypeSuffix_opt
-				    "((("+Digits+"(\\.)?("+Digits+"?)("+Exp+")?)|"+
-
-				    // . Digits ExponentPart_opt FloatTypeSuffix_opt
-				    "(\\.("+Digits+")("+Exp+")?)|"+
-
-				    // Hexadecimal strings
-				    "((" +
-				    // 0[xX] HexDigits ._opt BinaryExponent FloatTypeSuffix_opt
-				    "(0[xX]" + HexDigits + "(\\.)?)|" +
-
-				    // 0[xX] HexDigits_opt . HexDigits BinaryExponent FloatTypeSuffix_opt
-				    "(0[xX]" + HexDigits + "?(\\.)" + HexDigits + ")" +
-
-				    ")[pP][+-]?" + Digits + "))" +
-				    "[fFdD]?))" +
-				    "[\\x00-\\x20]*");// Optional trailing "whitespace"
-
-				if (!Pattern.matches(fpRegex, this.txt_tarif.getText())){
-				    reponse=false;
-				    this.lbl_erreurtarif.setVisible(true);}
-				else
-					this.lbl_erreurtarif.setVisible(false);
-				if (this.cbb_perio.getSelectionModel().getSelectedIndex() == -1) {
-					this.lbl_erreurperio.setVisible(true);
-					reponse = false;
-				} else
-					this.lbl_erreurperio.setVisible(false);
-
-		return reponse;
+    	
+    	if(txt_visuel.getText().trim().equals("")){
+    		error = true;
+    		lbl_erreurvisuel.setVisible(true);
+    	}else {
+    		lbl_erreurvisuel.setVisible(false);
+    	}
+    	
+    	if(txt_tarif.getText().trim().equals("")){
+    		error = true;
+    		lbl_erreurtarif.setVisible(true);
+    	}else {
+    		lbl_erreurtarif.setVisible(false);
+    	}
+    	
+    	
+    	if ( !error ) {
+    		Revue rev = new Revue(
+    								txt_titre.getText().trim(),
+    								txt_description.getText().trim(),
+    								txt_visuel.getText().trim(),
+    								txt_tarif.getText().trim()
+    								);
+    		
+    		if(VueRevueControleur.mem == null)
+    			AccueilControleur.dao.getRevueDAO().create(rev);
+    		else {
+    			rev.setId_revue( VueRevueControleur.mem.getId_revue() );
+    			AccueilControleur.dao.getRevueDAO().update(rev);
+    		}
+    		
+    		try {
+    			Stage stage =(Stage) btn_valider.getScene().getWindow();
+    			stage.close(); 
+    			
+    			Stage stage1 = new Stage();
+    			
+    			URL fxmlURL = getClass().getResource("../fenetre/VueRevue.fxml");
+    			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+    			Parent root = fxmlLoader.load();
+    			Scene scene = new Scene(root);
+    			
+    			stage1.setScene(scene);
+    			stage1.setTitle("Tous les Revues");
+    			stage1.show();
+       		} catch (Exception e) {
+       			Alert alert=new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(btn_valider.getScene().getWindow());
+                alert.setTitle("ERREUR");
+                alert.setHeaderText("erreur survenue :");
+                alert.setContentText(e.toString());
+                alert.showAndWait();
+       		}
+		}
 	}
 
 }
