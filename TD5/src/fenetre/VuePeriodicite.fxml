@@ -12,12 +12,12 @@
          <children>
             <TableView fx:id="tbl_periodicite" prefHeight="340.0" prefWidth="600.0">
               <columns>
-                <TableColumn prefWidth="300.0" text="Id periodicite" />
-                <TableColumn prefWidth="300.0" text="Libelle" />
+                <TableColumn fx:id="col_perioidperio" prefWidth="300.0" text="Id periodicite" />
+                <TableColumn fx:id="col_libelle" prefWidth="300.0" text="Libelle" />
               </columns>
             </TableView>
          </children></Pane>
-      <Pane fx:id="pnl_top" prefHeight="60.0" prefWidth="600.0" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane prefHeight="60.0" prefWidth="600.0" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="btn_supprimer" layoutX="264.0" layoutY="18.0" mnemonicParsing="false" onAction="#supprimerPeriodicite" text="Supprimer" />
             <Button fx:id="btn_modifier" layoutX="133.0" layoutY="18.0" mnemonicParsing="false" onAction="#modifierPeriodicite" text="Modifier" />
