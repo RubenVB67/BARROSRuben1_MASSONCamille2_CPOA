@@ -40,6 +40,14 @@ public class Revue {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Revue(String titre, String description, String visuel, String tarif_numero) {
+		super();
+		this.titre = titre;
+		this.description = description;
+		this.tarif_numero = Double.parseDouble(tarif_numero);
+		this.visuel = visuel;
+	}
+
 	public void setId_revue(int id_revue) {
 		this.id_revue = id_revue;
 	}
