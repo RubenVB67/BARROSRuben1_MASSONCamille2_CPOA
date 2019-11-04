@@ -105,7 +105,7 @@ public class VueClientControleur {
 			
 	        Stage stage1 = new Stage();
 			
-			URL fxmlURL = getClass().getResource("../fenetre/DetailCAbonnementlient.fxml");
+			URL fxmlURL = getClass().getResource("../fenetre/DetailClient.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
