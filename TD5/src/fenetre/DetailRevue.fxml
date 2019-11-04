@@ -25,9 +25,9 @@
             <Label fx:id="lbl_erreurdescription" layoutX="343.0" layoutY="152.0" text="Il manque une description" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurvisuel" layoutX="343.0" layoutY="192.0" text="Il manque un nom de visuel" textFill="RED" visible="false" />
             <Label fx:id="lbl_erreurtarif" layoutX="343.0" layoutY="237.0" text="Il manque un tarif" textFill="RED" visible="false" />
+            <Label fx:id="lbl_erreurperio" text="Il manque un choix de periodicite" textFill="RED" visible="false" />
             <Label fx:id="lbl_perio" layoutX="46.0" layoutY="272.0" text="Periodicité :" />
             <ComboBox fx:id="cbb_perio" layoutX="150.0" layoutY="268.0" prefHeight="9.0" prefWidth="150.0" />
-            <Label fx:id="lbl_erreurperio" layoutX="343.0" layoutY="272.0" text="Il manque un choix de periodicite" textFill="RED" visible="false" />
          </children>
       </Pane>
    </children>
