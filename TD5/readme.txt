@@ -12,7 +12,7 @@ Ce qui a bien etait realiser :
 - afficher les abo en cours         MASSON Camille
 - afficher les abo pour un client   MASSON Camille
 
-Ce qui manque pour l'instant :
+Ce qui manque:
 
 Méthode modifier pour la revue
 Les méthodes pour periodicite
